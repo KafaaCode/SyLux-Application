@@ -1,0 +1,184 @@
+@extends('admin.layouts.app')
+
+@section('content')
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h2 class="content-header-title float-left mb-0" style="color: #70B9BE; font-weight: bold;">إضافة تخصص جديد</h2>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.specializations.index') }}">التخصصات</a></li>
+                        <li class="breadcrumb-item active">إضافة تخصص جديد</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+        <div class="form-group breadcrumb-right">
+            <a href="{{ route('admin.specializations.index') }}" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-right"></i> العودة للقائمة
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <i class="fa-solid fa-plus text-success"></i>
+                    إضافة تخصص جديد
+                </h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.specializations.store') }}" method="POST" id="specializationForm">
+                    @csrf
+                    
+                    <!-- Validation Errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <h6 class="alert-heading">
+                                <i class="fa-solid fa-exclamation-triangle"></i>
+                                يرجى تصحيح الأخطاء التالية:
+                            </h6>
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <div class="row">
+                        <!-- Basic Information -->
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">
+                                        <i class="fa-solid fa-info-circle text-info"></i>
+                                        المعلومات الأساسية
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">
+                                                    اسم التخصص <span class="text-danger">*</span>
+                                                </label>
+                                                <input type="text" 
+                                                       id="name" 
+                                                       name="name" 
+                                                       class="form-control @error('name') is-invalid @enderror"
+                                                       placeholder="أدخل اسم التخصص"
+                                                       value="{{ old('name') }}"
+                                                       required>
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Translations Section -->
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">
+                                        <i class="fa-solid fa-language text-primary"></i>
+                                        الترجمات
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs" id="translationTabs" role="tablist">
+                                            @foreach(config('app.available_locales') as $locale => $name)
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link {{ $loop->first ? 'active' : '' }}" 
+                                                       id="{{ $locale }}-tab" 
+                                                       data-toggle="tab" 
+                                                       href="#{{ $locale }}" 
+                                                       role="tab" 
+                                                       aria-controls="{{ $locale }}" 
+                                                       aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                                        {{ $name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        
+                                        <div class="tab-content" id="translationTabsContent">
+                                            @foreach(config('app.available_locales') as $locale => $name)
+                                                <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" 
+                                                     id="{{ $locale }}" 
+                                                     role="tabpanel" 
+                                                     aria-labelledby="{{ $locale }}-tab">
+                                                    <div class="row mt-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="name_translated_{{ $locale }}" class="form-label">
+                                                                    اسم التخصص ({{ $name }})
+                                                                </label>
+                                                                <input type="text" 
+                                                                       id="name_translated_{{ $locale }}" 
+                                                                       name="translations[{{ $locale }}][name_translated]" 
+                                                                       class="form-control"
+                                                                       placeholder="أدخل اسم التخصص بـ {{ $name }}"
+                                                                       value="{{ old('translations.' . $locale . '.name_translated') }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                            <i class="fa-solid fa-times"></i> إلغاء
+                                        </button>
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fa-solid fa-save"></i> حفظ التخصص
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.nav-tabs .nav-link {
+    color: #6c757d;
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+</style>
+@endsection
