@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                   {{ __('messages.package_products_style') }}
 
-                  <span style="color: #70B9BE" class="text-highlight-warning">
+                  <span style="color: #B79C6D" class="text-highlight-warning">
                     <span class="js-typedjs" data-hs-typed-options='{
                     "strings": ["{{ __('messages.elegant') }}", "{{ __('messages.distinctive') }}", "{{ __('messages.professional') }}"],
                     "typeSpeed": 90,

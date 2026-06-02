@@ -1,4 +1,4 @@
-<x-guest-layout :title="'إنشاء حساب جديد'" :subtitle="'انضم إلى عائلة Frip Trading'">
+<x-guest-layout :title="'إنشاء حساب جديد'" :subtitle="'انضم إلى عائلةSyLux'">
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

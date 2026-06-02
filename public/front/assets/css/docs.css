@@ -250,7 +250,7 @@ div.code-toolbar > .toolbar button:focus,
 div.code-toolbar > .toolbar span:hover,
 div.code-toolbar > .toolbar span:focus {
   color: #fff;
-  background-color: #70B9BE;
+  background-color: #B79C6D;
 }
 
 /* Light Theme  */
@@ -268,7 +268,7 @@ div.code-toolbar > .prism-light + .toolbar button:focus,
 div.code-toolbar > .prism-light + .toolbar span:hover,
 div.code-toolbar > .prism-light + .toolbar span:focus {
   color: #21325b;
-  background-color: #70B9BE;
+  background-color: #B79C6D;
 }
 
 /* AnchorJS Link */
@@ -316,7 +316,7 @@ div.code-toolbar > .prism-light + .toolbar span:focus {
 
 .hs-docs-copy-to-clipboard:hover .hs-docs-copy-to-clipboard-text {
   color: #fff;
-  background-color: #70B9BE;
+  background-color: #B79C6D;
 }
 
 /* Content Divider */

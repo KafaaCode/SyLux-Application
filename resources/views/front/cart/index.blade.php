@@ -94,7 +94,7 @@
         </div>
     @else
         <div class="text-center py-5">
-            <img src="{{ asset('image.png') }}" alt="سلة التسوق فارغة" class="mb-2" style="max-width: 300px;">
+            <img src="{{ asset('logo.png') }}" alt="سلة التسوق فارغة" class="mb-2" style="max-width: 300px;">
             <h4 class="text-muted">سلة التسوق فارغة.</h4>
         </div>
     @endif

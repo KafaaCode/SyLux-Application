@@ -182,15 +182,11 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories,name',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'country_id' => 'required|exists:countries,id',
-            'specialization_id' => 'required|exists:specializations,id',
             'active' => 'nullable|boolean',
         ]);
 
         $categoryData = [
             'name' => $request->input('name'),
-            'country_id' => $request->input('country_id'),
-            'specialization_id' => $request->input('specialization_id'),
             'active' => $request->input('active', 1),
         ];
 
@@ -236,16 +232,12 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories,name,' . $id,
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'country_id' => 'required|exists:countries,id',
-            'specialization_id' => 'required|exists:specializations,id',
             'active' => 'nullable|boolean',
         ]);
 
         $category = Category::findOrFail($id);
         
         $category->name = $request->input('name');
-        $category->country_id = $request->input('country_id');
-        $category->specialization_id = $request->input('specialization_id');
         $category->active = $request->input('active', 1);
         
         if ($request->hasFile('image')) {

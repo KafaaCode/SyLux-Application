@@ -96,7 +96,7 @@
 }
 
 .horizontal-menu .header-navbar.navbar-brand-center .navbar-header .navbar-brand .brand-text {
-  color : #70B9BE;
+  color : #B79C6D;
   padding-right : 1rem;
   margin-bottom : 0;
   font-weight : 600;
@@ -207,7 +207,7 @@
 
 .horizontal-menu .header-navbar.navbar-horizontal ul#main-menu-navigation > li > .dropdown-menu .active > a {
   background : #F8F8F8;
-  color : #70B9BE;
+  color : #B79C6D;
   font-weight : 500;
 }
 
@@ -238,8 +238,8 @@
 }
 
 .horizontal-menu .header-navbar.navbar-horizontal ul#main-menu-navigation > li.active > a {
-  background : -webkit-linear-gradient(208deg, #70B9BE, rgba(115, 103, 240, 0.7));
-  background :         linear-gradient(-118deg, #70B9BE, rgba(115, 103, 240, 0.7));
+  background : -webkit-linear-gradient(208deg, #B79C6D, rgba(115, 103, 240, 0.7));
+  background :         linear-gradient(-118deg, #B79C6D, rgba(115, 103, 240, 0.7));
   box-shadow : 0 0 6px 1px rgba(115, 103, 240, 0.6);
   color : #FFFFFF;
   border-radius : 4px;
@@ -254,7 +254,7 @@
 }
 
 .horizontal-menu .navbar-dark .nav-item.active > a {
-  border-bottom : 2px solid #70B9BE;
+  border-bottom : 2px solid #B79C6D;
   background-color : #313C50;
 }
 

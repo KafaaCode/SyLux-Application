@@ -23,7 +23,7 @@
         @if($products->isEmpty())
             <!-- No Products Message -->
             <div class="text-center py-5">
-                <img src="{{ asset('image.png') }}" alt="لا يوجد منتجات" class="mb-2" style="max-width: 300px;">
+                <img src="{{ asset('logo.png') }}" alt="لا يوجد منتجات" class="mb-2" style="max-width: 300px;">
                 <h4 class="text-muted">عذرًا، لا توجد منتجات متاحة حاليًا في هذه الفئة.</h4>
             </div>
         @else

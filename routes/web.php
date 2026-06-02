@@ -46,7 +46,10 @@ Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edi
 Route::get('user-create', [UserController::class, 'create_user']);
 Route::resource('products', ProductController::class);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect()->route('admin.index');
+});
 
 Route::get('/privacy', function () {
     return view('front.privacy.privacy');
@@ -77,8 +80,8 @@ Route::get('/orders', [OrderController::class, 'indexFront'])->middleware('auth'
 Route::post('/orders', [OrderController::class, 'storeWeb'])->middleware('auth')->name('orders.store');
 
 // Route::middleware(['auth'])->group(function () {
-    Route::get('/web-categories/{id}', [CategoryController::class, 'webshow'])->name('categories.web.show');
-    Route::get('/products', [ProductController::class, 'webIndex'])->name('products.web.index');
+Route::get('/web-categories/{id}', [CategoryController::class, 'webshow'])->name('categories.web.show');
+Route::get('/products', [ProductController::class, 'webIndex'])->name('products.web.index');
 Route::get('products/{product}', [ProductController::class, 'webShow'])->name('products.web.show');
 // });
 

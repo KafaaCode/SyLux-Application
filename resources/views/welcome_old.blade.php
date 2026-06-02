@@ -206,7 +206,7 @@
                 <h1 class="display-4 mb-3">
                   غلّف منتجاتك بأسلوب
 
-                  <span style="color: #70B9BE" class="text-highlight-warning">
+                  <span style="color: #B79C6D" class="text-highlight-warning">
                     <span class="js-typedjs" data-hs-typed-options='{
                     "strings": ["راقي.", "مميز.", "احترافي."],
                     "typeSpeed": 90,

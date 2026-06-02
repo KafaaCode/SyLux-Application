@@ -5,7 +5,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0" style="color: #70B9BE; font-weight: bold;">تفاصيل المنتج</h2>
+                <h2 class="content-header-title float-left mb-0" style="color: #B79C6D; font-weight: bold;">تفاصيل المنتج</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">الرئيسية</a></li>
@@ -369,11 +369,11 @@
     background: #f8f9fa;
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid #70B9BE;
+    border-left: 4px solid #B79C6D;
 }
 
 .section-title {
-    color: #70B9BE;
+    color: #B79C6D;
     font-weight: 600;
     margin-bottom: 1rem;
     display: flex;
@@ -429,7 +429,7 @@
 
 .category-name {
     font-size: 1.1rem;
-    color: #70B9BE;
+    color: #B79C6D;
 }
 
 .category-description {
@@ -437,7 +437,7 @@
 }
 
 .card-title {
-    color: #70B9BE;
+    color: #B79C6D;
     font-weight: 600;
 }
 

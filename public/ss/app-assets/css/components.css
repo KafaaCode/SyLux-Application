@@ -2474,7 +2474,7 @@ footer.footer-border {
   background-color: #3b5998; }
 
 .bg-flickr {
-  background-color: #70B9BE; }
+  background-color: #B79C6D; }
 
 .bg-foursquare {
   background-color: #f94877; }
@@ -2848,7 +2848,7 @@ footer.footer-border {
   border-radius: 0.42rem;
   color: #82868b;
   background-color: rgba(130, 134, 139, 0.06);
-  border: 1px solid #70B9BE; }
+  border: 1px solid #B79C6D; }
 
 .custom-options-checkable .custom-option-item .custom-option-item-title {
   color: #82868b; }
@@ -2863,7 +2863,7 @@ footer.footer-border {
   border-color: #7367f0; }
 
 .custom-option-item-check:checked + .custom-option-item .custom-option-item-title {
-  color: #70B9BE; }
+  color: #B79C6D; }
 
 @media screen and (min-width: 0px) {
   head {

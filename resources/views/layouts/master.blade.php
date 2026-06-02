@@ -132,16 +132,21 @@
                     ])
                     <ul class="list-inline mb-3">
                         @if(!empty($siteSettings['facebook_link']))
-                            <li class="list-inline-item"><a href="{{ $siteSettings['facebook_link'] }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $siteSettings['facebook_link'] }}" target="_blank"
+                                    rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-facebook"></i></a></li>
                         @endif
                         @if(!empty($siteSettings['instagram_link']))
-                            <li class="list-inline-item"><a href="{{ $siteSettings['instagram_link'] }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $siteSettings['instagram_link'] }}" target="_blank"
+                                    rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-instagram"></i></a>
+                            </li>
                         @endif
                         @if(!empty($siteSettings['twitter_link']))
-                            <li class="list-inline-item"><a href="{{ $siteSettings['twitter_link'] }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $siteSettings['twitter_link'] }}" target="_blank"
+                                    rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-twitter"></i></a></li>
                         @endif
                         @if(!empty($siteSettings['linkedin_link']))
-                            <li class="list-inline-item"><a href="{{ $siteSettings['linkedin_link'] }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $siteSettings['linkedin_link'] }}" target="_blank"
+                                    rel="noopener" class="btn btn-outline-light btn-sm"><i class="bi-linkedin"></i></a></li>
                         @endif
                     </ul>
                     <h6 class="mb-2">{{ __('messages.newsletter') }}</h6>

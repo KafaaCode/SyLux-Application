@@ -37,7 +37,7 @@
                     }
                     // If no images at all, add placeholder
                     if ($allImages->count() == 0) {
-                        $allImages->push((object)['path' => 'image.png', 'full_path' => asset('image.png')]);
+                        $allImages->push((object)['path' => 'logo.png', 'full_path' => asset('logo.png')]);
                     }
                 @endphp
 

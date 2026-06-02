@@ -5,7 +5,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0" style="color: #70B9BE; font-weight: bold;">تعديل المنتج</h2>
+                <h2 class="content-header-title float-left mb-0" style="color: #B79C6D; font-weight: bold;">تعديل المنتج</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">الرئيسية</a></li>
@@ -435,12 +435,12 @@
 }
 
 .image-upload-area:hover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #f0f8f9;
 }
 
 .image-upload-area.dragover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #e8f4f5;
 }
 
@@ -455,7 +455,7 @@
 }
 
 .card-title {
-    color: #70B9BE;
+    color: #B79C6D;
     font-weight: 600;
 }
 
@@ -478,7 +478,7 @@
 }
 
 .current-image img {
-    border: 2px solid #70B9BE;
+    border: 2px solid #B79C6D;
 }
 
 /* Tab fixes */

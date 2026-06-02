@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Frip Traiding'),
+    'name' => env('APP_NAME', 'SyLux'),
 
     /*
     |--------------------------------------------------------------------------
@@ -110,9 +110,6 @@ return [
     'available_locales' => [
         'en' => 'English',
         'ar' => 'العربية',
-        'be' => 'Belgisch',
-        'tr' => 'Türkçe',
-        'nl' => 'Nederlands',
     ],
 
     /*

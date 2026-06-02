@@ -42,13 +42,13 @@
 
 .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button) {
   background-color: transparent;
-  border-color: #70B9BE;
-  color: #70B9BE; }
+  border-color: #B79C6D;
+  color: #B79C6D; }
 
 .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button).fc-button-active, .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button):hover {
   background-color: rgba(115, 103, 240, 0.2) !important;
-  border-color: #70B9BE !important;
-  color: #70B9BE; }
+  border-color: #B79C6D !important;
+  color: #B79C6D; }
 
 .fc .fc-toolbar .fc-button-group .fc-button-primary.fc-sidebarToggle-button {
   border: 0; }

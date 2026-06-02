@@ -5,7 +5,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0" style="color: #70B9BE; font-weight: bold;">تعديل الفئة</h2>
+                <h2 class="content-header-title float-left mb-0" style="color: #B79C6D; font-weight: bold;">تعديل الفئة</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">الرئيسية</a></li>
@@ -87,50 +87,6 @@
                                                        value="{{ old('name', $category->name) }}"
                                                        required>
                                                 @error('name')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="country_id" class="form-label">
-                                                    الدولة <span class="text-danger">*</span>
-                                                </label>
-                                                <select id="country_id" 
-                                                        name="country_id" 
-                                                        class="form-control @error('country_id') is-invalid @enderror"
-                                                        required>
-                                                    <option value="">اختر الدولة</option>
-                                                    @foreach ($countries as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('country_id', $category->country_id) == $id ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('country_id')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="specialization_id" class="form-label">
-                                                    التخصص <span class="text-danger">*</span>
-                                                </label>
-                                                <select id="specialization_id" 
-                                                        name="specialization_id" 
-                                                        class="form-control @error('specialization_id') is-invalid @enderror"
-                                                        required>
-                                                    <option value="">اختر التخصص</option>
-                                                    @foreach ($specializations as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('specialization_id', $category->specialization_id) == $id ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('specialization_id')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -328,12 +284,12 @@
 }
 
 .image-upload-area:hover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #f0f8f9;
 }
 
 .image-upload-area.dragover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #e8f4f5;
 }
 
@@ -348,7 +304,7 @@
 }
 
 .card-title {
-    color: #70B9BE;
+    color: #B79C6D;
     font-weight: 600;
 }
 
@@ -371,7 +327,7 @@
 }
 
 .current-image img {
-    border: 2px solid #70B9BE;
+    border: 2px solid #B79C6D;
 }
 
 /* Tab fixes */
@@ -485,7 +441,7 @@ $(document).ready(function() {
 
     // Form validation
     $('#categoryForm').on('submit', function(e) {
-        const requiredFields = ['name', 'country_id', 'specialization_id'];
+        const requiredFields = ['name'];
         let isValid = true;
 
         requiredFields.forEach(field => {

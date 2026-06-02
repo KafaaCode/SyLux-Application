@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Frip Traiding</title>
+    <title>SyLux</title>
     <link rel="apple-touch-icon" href="{{asset('logo.jpg')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('logo.jpg')}}">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet"> -->
@@ -103,7 +103,7 @@
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"></a>
-                        <h2 style="font-weight: bold;font-family: 'Cairo', sans-serif;">Frip Traiding </h2>
+                        <h2 style="font-weight: bold;font-family: 'Cairo', sans-serif;">SyLux </h2>
                     </li>
                 </ul>
             </div>

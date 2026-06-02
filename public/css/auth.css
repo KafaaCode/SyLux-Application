@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #347478 0%, #70B9BE 100%);
+    background: linear-gradient(135deg, #347478 0%, #B79C6D 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@ body {
 }
 
 .auth-header {
-    background: linear-gradient(135deg, #347478 0%, #70B9BE 100%);
+    background: linear-gradient(135deg, #347478 0%, #B79C6D 100%);
     padding: 30px;
     text-align: center;
     color: white;
@@ -91,7 +91,7 @@ body {
 
 .form-input:focus {
     outline: none;
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background: white;
     box-shadow: 0 0 0 3px rgba(112, 185, 190, 0.1);
 }
@@ -111,7 +111,7 @@ body {
 .btn-primary {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #347478 0%, #70B9BE 100%);
+    background: linear-gradient(135deg, #347478 0%, #B79C6D 100%);
     color: white;
     border: none;
     border-radius: 10px;
@@ -140,7 +140,7 @@ body {
 }
 
 .auth-link {
-    color: #70B9BE;
+    color: #B79C6D;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;

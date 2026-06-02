@@ -17,11 +17,7 @@
     <body>
         <div class="auth-container">
             <div class="auth-header">
-                <div class="auth-logo">
-                    <img src="{{ asset('images/init_page.png') }}" alt="{{ config('app.name') }}">
-                </div>
                 <h1 class="auth-title">{{ $title ?? 'مرحباً بك' }}</h1>
-                <p class="auth-subtitle">{{ $subtitle ?? 'انضم إلى عائلة Frip Trading' }}</p>
             </div>
 
             <div class="auth-form">

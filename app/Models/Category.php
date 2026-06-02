@@ -12,10 +12,16 @@ class Category extends Model
     protected $fillable = [
         'name',
         'image',
+        'section_id',
         'country_id',
         'specialization_id',
         'active'
     ];
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
 
     // علاقة الفئة بالدولة
     public function country()

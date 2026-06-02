@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -18,11 +19,18 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('users', UserController::class)->names('admin.users');
     Route::resource('permissions', PermissionController::class)->names('admin.permissions');
     Route::resource('categories', CategoryController::class)->names('admin.categories');
-    
+
+    Route::prefix('sections')->name('admin.sections.')->group(function () {
+        Route::get('/', [SectionController::class, 'index'])->name('index');
+        Route::post('/', [SectionController::class, 'store'])->name('store');
+        Route::put('/{section}', [SectionController::class, 'update'])->name('update');
+        Route::patch('/{section}/toggle', [SectionController::class, 'toggle'])->name('toggle');
+    });
+
     // Product images routes must be defined before resource routes
     Route::delete('products/{product}/images/{image}', [ProductController::class, 'destroyImage'])->name('admin.products.images.destroy');
     Route::resource('products', ProductController::class)->names('admin.products');
-    
+
     Route::resource('countries', CountryController::class)->names('admin.countries')->except(['show']);
     Route::resource('specializations', SpecializationController::class)->names('admin.specializations')->except(['show']);
     Route::get('orders/', [OrderController::class, 'index'])->name('admin.orders.index');

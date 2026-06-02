@@ -88,18 +88,18 @@
 }
 
 .bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-box {
-  background-color : #70B9BE;
+  background-color : #B79C6D;
   color : #FFFFFF;
   box-shadow : 0 3px 6px 0 rgba(115, 103, 240, 0.4);
 }
 
 .bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-label .bs-stepper-title {
-  color : #70B9BE;
+  color : #B79C6D;
 }
 
 .bs-stepper .bs-stepper-header .step.crossed .step-trigger .bs-stepper-box {
   background-color : rgba(115, 103, 240, 0.12);
-  color : #70B9BE !important;
+  color : #B79C6D !important;
 }
 
 .bs-stepper .bs-stepper-header .step.crossed .step-trigger .bs-stepper-label .bs-stepper-title {
@@ -107,7 +107,7 @@
 }
 
 .bs-stepper .bs-stepper-header .step.crossed + .line {
-  color : #70B9BE;
+  color : #B79C6D;
 }
 
 .bs-stepper .bs-stepper-content {
@@ -193,13 +193,13 @@
 }
 
 .dark-layout .bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-box {
-  background-color : #70B9BE;
+  background-color : #B79C6D;
   color : #FFFFFF;
   box-shadow : 0 3px 6px 0 rgba(115, 103, 240, 0.4);
 }
 
 .dark-layout .bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-label .bs-stepper-title {
-  color : #70B9BE;
+  color : #B79C6D;
 }
 
 .dark-layout .bs-stepper .bs-stepper-header .step.crossed .step-trigger .bs-stepper-label, .dark-layout .bs-stepper .bs-stepper-header .step.crossed .step-trigger .bs-stepper-title {

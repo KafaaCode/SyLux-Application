@@ -10,7 +10,7 @@
 </g>
 <rect x="68" y="62" width="25" height="2" rx="1" fill="#71869D"/>
 <rect x="68" y="69" width="13" height="2" rx="1" fill="#D9DDEA"/>
-<rect x="68" y="77" width="17" height="2" rx="1" fill="#70B9BE"/>
+<rect x="68" y="77" width="17" height="2" rx="1" fill="#B79C6D"/>
 <rect x="68" y="85" width="10" height="2" rx="1" fill="#D9DDEA"/>
 <rect x="100" y="61" width="24" height="2" rx="1" fill="#71869D"/>
 <rect x="100" y="69" width="13" height="2" rx="1" fill="#D9DDEA"/>
@@ -29,7 +29,7 @@
 <rect x="120" y="38" width="10" height="3" rx="1.5" fill="#D9DDEA"/>
 <rect x="135" y="38" width="10" height="3" rx="1.5" fill="#D9DDEA"/>
 <rect x="150" y="38" width="10" height="3" rx="1.5" fill="#D9DDEA"/>
-<rect x="105" y="38" width="10" height="3" rx="1.5" fill="#70B9BE"/>
+<rect x="105" y="38" width="10" height="3" rx="1.5" fill="#B79C6D"/>
 <rect x="28" y="49" width="144" height="1" fill="#EBEDF5"/>
 <rect x="28" y="30" width="144" height="1" fill="#EBEDF5"/>
 <path d="M0 104H200V140C200 142.209 198.209 144 196 144H4C1.79086 144 0 142.209 0 140V104Z" fill="url(#paint0_linear)"/>

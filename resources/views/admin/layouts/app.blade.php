@@ -11,9 +11,9 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Frip Traiding</title>
-    <link rel="apple-touch-icon" href="{{asset('image.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('image.png')}}">
+    <title>SyLux</title>
+    <link rel="apple-touch-icon" href="{{asset('logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('logo.png')}}">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet"> -->
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -54,14 +54,162 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/admin-fixes.css') }}">
     <!-- END: Custom CSS-->
     <style>
+        /* =========================
+   Sidebar Modern Design
+========================= */
+
+        .navigation-main {
+            padding-top: 10px;
+        }
+
+        .navigation-main .nav-item {
+            margin: 6px 12px;
+        }
+
+        .navigation-main .nav-item a {
+            display: flex;
+            align-items: center;
+            border-radius: 14px;
+            padding: 13px 16px !important;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif !important;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navigation-main .nav-item a i {
+            width: 24px;
+            text-align: center;
+            margin-left: 12px;
+            font-size: 17px;
+            transition: all .3s ease;
+        }
+
+        /* Hover Effect */
+        .navigation-main .nav-item a:hover {
+            background: rgba(183, 156, 109, 0.12);
+            color: #B79C6D !important;
+            transform: translateX(-4px);
+        }
+
+        .navigation-main .nav-item a:hover i {
+            transform: scale(1.15);
+            color: #B79C6D;
+        }
+
+        /* Active Menu */
+        .main-menu.menu-light .navigation>li.active>a {
+            background: linear-gradient(135deg,
+                    #B79C6D 0%,
+                    #D7BF8E 100%) !important;
+
+            color: #fff !important;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 25px rgba(183, 156, 109, 0.35);
+
+            transform: translateX(-3px);
+        }
+
+        .main-menu.menu-light .navigation>li.active>a i,
+        .main-menu.menu-light .navigation>li.active>a span {
+            color: #fff !important;
+        }
+
+        /* Active Indicator */
+        .main-menu.menu-light .navigation>li.active>a::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            width: 4px;
+            height: 70%;
+            background: #fff;
+            border-radius: 20px;
+        }
+
+        /* Sidebar */
+        .main-menu {
+            border-left: 1px solid rgba(183, 156, 109, .15);
+            box-shadow: 0 0 25px rgba(0, 0, 0, .04);
+        }
+
+        /* Logo Area */
+        .navbar-header {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .brand-logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(183, 156, 109, .25);
+        }
+
+        .brand-text {
+            font-weight: 700 !important;
+            letter-spacing: .5px;
+        }
+
+        /* Dark Mode */
+        body.dark-layout .navigation-main .nav-item a {
+            color: #d0d2d6 !important;
+        }
+
+        body.dark-layout .navigation-main .nav-item a:hover {
+            background: rgba(183, 156, 109, .15);
+            color: #D7BF8E !important;
+        }
+
+        body.dark-layout .navigation-main .nav-item a:hover i {
+            color: #D7BF8E !important;
+        }
+
+        body.dark-layout .main-menu.menu-light .navigation>li.active>a {
+            background: linear-gradient(135deg,
+                    #B79C6D,
+                    #D7BF8E) !important;
+        }
+
+        /* Header */
+        .header-navbar {
+            backdrop-filter: blur(10px);
+        }
+
+        /* Scroll Top */
+        .scroll-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50% !important;
+            box-shadow: 0 8px 20px rgba(183, 156, 109, .35);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        #mainFooter {
+            padding: 15px 20px;
+        }
+
+        #mainFooter strong {
+            font-weight: 700;
+        }
+
         .navigation-main .nav-item a {
             font-family: 'Cairo', sans-serif !important;
         }
 
         .main-menu.menu-light .navigation>li.active>a {
-            background: -webkit-linear-gradient(208deg, #70B9BE, #70B9BE);
-            background: linear-gradient(-118deg, #70B9BE, #70B9BE);
-            box-shadow: 0 0 10px 1px #70B9BE;
+            background: -webkit-linear-gradient(208deg, #B79C6D, #B79C6D);
+            background: linear-gradient(-118deg, #B79C6D, #B79C6D);
+            box-shadow: 0 0 10px 1px #B79C6D;
             color: #FFFFFF;
             font-weight: 400;
             border-radius: 4px;
@@ -81,14 +229,14 @@
             background-color: #283046 !important;
         }
 
-        body.dark-layout .main-menu .navigation > li > a {
+        body.dark-layout .main-menu .navigation>li>a {
             color: #b4b7bd !important;
         }
 
-        body.dark-layout .main-menu .navigation > li.active > a {
-            background: -webkit-linear-gradient(208deg, #70B9BE, #70B9BE);
-            background: linear-gradient(-118deg, #70B9BE, #70B9BE);
-            box-shadow: 0 0 10px 1px #70B9BE;
+        body.dark-layout .main-menu .navigation>li.active>a {
+            background: -webkit-linear-gradient(208deg, #B79C6D, #B79C6D);
+            background: linear-gradient(-118deg, #B79C6D, #B79C6D);
+            box-shadow: 0 0 10px 1px #B79C6D;
             color: #FFFFFF !important;
         }
 
@@ -114,7 +262,7 @@
 
         body.dark-layout .form-control:focus {
             background-color: #404656 !important;
-            border-color: #70B9BE !important;
+            border-color: #B79C6D !important;
             color: #b4b7bd !important;
         }
 
@@ -198,8 +346,8 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background-color: #70B9BE !important;
-            border-color: #70B9BE !important;
+            background-color: #B79C6D !important;
+            border-color: #B79C6D !important;
         }
 
         .scroll-top:hover {
@@ -226,22 +374,23 @@
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"></a>
-                        <h2 style="font-weight: bold;font-family: 'Cairo', sans-serif;">Frip Traiding </h2>
+                        <h2 style="font-weight: bold;font-family: 'Cairo', sans-serif;"><img
+                                src="{{asset('logo.png')}}" alt="avatar" height="40" width="110"> </h2>
                     </li>
                 </ul>
             </div>
             <ul class="nav navbar-nav align-items-center ms-auto">
-                <li class="nav-item d-none d-lg-block">
+                <!-- <li class="nav-item d-none d-lg-block">
                     <a class="nav-link nav-link-style" id="darkModeToggle" href="#" onclick="toggleDarkMode()">
                         <i class="ficon" data-feather="moon" id="darkModeIcon"></i>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder"></span><span
                                 class="user-status"></span></div><span class="avatar"><img class="round"
-                                src="{{asset('image.png')}}" alt="avatar" height="40" width="40"><span
+                                src="{{asset('logo.png')}}" alt="avatar" height="40" width="40"><span
                                 class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
@@ -277,9 +426,9 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item me-auto"><a class="navbar-brand" href="/admin/dashboard">
                         <span class="brand-logo">
-                            <img src="{{asset('image.png')}}" alt="" />
+                            <img src="{{asset('logo.png')}}" alt="" />
                         </span>
-                        <h2 class="brand-text" style="color: #70B9BE;">Frip Traiding</h2>
+                        <h2 class="brand-text" style="color: #B79C6D;">SyLux</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
                             class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
@@ -290,40 +439,39 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main">
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.index') }}"><i
-                            class="fa-solid fa-house"></i><span class="menu-title text-truncate">الرئيسية</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.index') }}">
+                        <i class="fa-solid fa-house"></i><span class="menu-title text-truncate">الرئيسية</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.users.index') }}"><i
-                            class="fa-solid fa-user-group"></i><span
-                            class="menu-title text-truncate">المستخدمين</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.orders.index') }}"><i
+                            class="fa-solid fa-cart-shopping"></i><span
+                            class="menu-title text-truncate">الطلبات</span></a>
                 </li>
+
                 <!-- categories and products -->
                 <li class="nav-item"><a class="d-flex align-items-center"
-                        href="{{ route('admin.categories.index') }}"><i class="fa-solid fa-list"></i><span
+                        href="{{ route('admin.categories.index') }}"><i class="fa-solid fa-layer-group"></i><span
                             class="menu-title text-truncate">الفئات</span></a>
                 </li>
+                <li class="nav-item"><a class="d-flex align-items-center"
+                        href="{{ route('admin.sections.index') }}"><i class="fa-solid fa-layer-group"></i><span
+                            class="menu-title text-truncate">الأقسام</span></a>
+                </li>
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.products.index') }}"><i
-                            class="fa-solid fa-box"></i><span class="menu-title text-truncate">المنتجات</span></a>
+                            class="fa-solid fa-box-open"></i><span class="menu-title text-truncate">المنتجات</span></a>
                 </li>
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.roles.index') }}"><i
-                            class="fa-solid fa-circle-minus"></i><span
+                            class="fa-solid fa-shield-halved"></i><span
                             class="menu-title text-truncate">الصلاحيات</span></a>
                 </li>
                 <li class="nav-item"><a class="d-flex align-items-center"
                         href="{{ route('admin.permissions.index') }}"><i class="fa-solid fa-circle-minus"></i><span
                             class="menu-title text-truncate">الأذونات</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.orders.index') }}"><i
-                            class="fa-solid fa-bag-shopping"></i><span
-                            class="menu-title text-truncate">الطلبات</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.users.index') }}"><i
+                            class="fa-solid fa-users"></i><span class="menu-title text-truncate">المستخدمين</span></a>
                 </li>
-
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.settings.edit') }}"><i class="fa-solid fa-gear"></i><span class="menu-title text-truncate">الإعدادات</span></a>
-                </li>
-
-                <li class="nav-item"><a class="d-flex align-items-center" href="/logout"><i
-                            class="fa-solid fa-right-from-bracket"></i><span class="menu-title text-truncate">تسجيل
-                            الخروج</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.settings.edit') }}"><i
+                            class="fa-solid fa-gear"></i><span class="menu-title text-truncate">الإعدادات</span></a>
                 </li>
             </ul>
         </div>
@@ -351,14 +499,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="mb-0">
-                        <strong style="color: #70B9BE;">Frip Trading</strong> 
+                        <strong style="color: #B79C6D;">Frip Trading</strong>
                         <span class="text-muted">- نظام إدارة التغليف</span>
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-0">
-                        <span class="text-muted">تم التطوير بواسطة</span> 
-                        <strong style="color: #70B9BE;">KafaaCode</strong>
+                        <span class="text-muted">تم التطوير بواسطة</span>
+                        <strong style="color: #B79C6D;">KafaaCode</strong>
                     </p>
                 </div>
             </div>
@@ -429,7 +577,7 @@
         function initializeDarkMode() {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             const darkModeIcon = document.getElementById('darkModeIcon');
-            
+
             if (isDarkMode) {
                 document.body.classList.add('dark-layout');
                 if (darkModeIcon) {
@@ -441,7 +589,7 @@
                     darkModeIcon.setAttribute('data-feather', 'moon');
                 }
             }
-            
+
             // إعادة تهيئة الأيقونات
             if (typeof feather !== 'undefined') {
                 feather.replace();
@@ -453,7 +601,7 @@
             const body = document.body;
             const darkModeIcon = document.getElementById('darkModeIcon');
             const isCurrentlyDark = body.classList.contains('dark-layout');
-            
+
             if (isCurrentlyDark) {
                 // تحويل إلى الوضع الفاتح
                 body.classList.remove('dark-layout');
@@ -469,7 +617,7 @@
                     darkModeIcon.setAttribute('data-feather', 'sun');
                 }
             }
-            
+
             // إعادة تهيئة الأيقونات
             if (typeof feather !== 'undefined') {
                 feather.replace();
@@ -479,29 +627,29 @@
         // إضافة تأثيرات إضافية للوضع الليلي
         function enhanceDarkMode() {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
-            
+
             if (isDarkMode) {
                 // إضافة تأثيرات إضافية للوضع الليلي
                 document.body.style.transition = 'all 0.3s ease';
-                
+
                 // تحديث ألوان العناصر الديناميكية
                 const dynamicElements = document.querySelectorAll('.btn-primary, .badge-primary');
                 dynamicElements.forEach(element => {
-                    element.style.backgroundColor = '#70B9BE';
-                    element.style.borderColor = '#70B9BE';
+                    element.style.backgroundColor = '#B79C6D';
+                    element.style.borderColor = '#B79C6D';
                 });
             }
         }
 
         // تشغيل التحسينات عند تحميل الصفحة
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             enhanceDarkMode();
         });
     </script>
-    
+
     <!-- Admin Fixes JavaScript -->
     <script src="{{ asset('/assets/js/admin-fixes.js') }}"></script>
-    
+
     @stack('scripts')
 </body>
 <!-- END: Body-->

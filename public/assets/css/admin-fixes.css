@@ -131,13 +131,13 @@
 
 /* Form fixes */
 .form-control:focus {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     box-shadow: 0 0 0 0.2rem rgba(112, 185, 190, 0.25);
 }
 
 .btn-primary {
-    background-color: #70B9BE;
-    border-color: #70B9BE;
+    background-color: #B79C6D;
+    border-color: #B79C6D;
 }
 
 .btn-primary:hover {
@@ -157,12 +157,12 @@
 }
 
 .image-upload-area:hover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #f0f8f9;
 }
 
 .image-upload-area.dragover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #e8f4f5;
 }
 
@@ -216,12 +216,12 @@ body.dark-layout .image-upload-area {
 }
 
 body.dark-layout .image-upload-area:hover {
-    border-color: #70B9BE !important;
+    border-color: #B79C6D !important;
     background-color: #404656 !important;
 }
 
 body.dark-layout .image-upload-area.dragover {
-    border-color: #70B9BE !important;
+    border-color: #B79C6D !important;
     background-color: #404656 !important;
 }
 
@@ -261,8 +261,8 @@ body.dark-layout .btn-info {
 }
 
 body.dark-layout .btn-primary {
-    background-color: #70B9BE !important;
-    border-color: #70B9BE !important;
+    background-color: #B79C6D !important;
+    border-color: #B79C6D !important;
 }
 
 body.dark-layout .btn-primary:hover {
@@ -272,7 +272,7 @@ body.dark-layout .btn-primary:hover {
 
 /* Badge Dark Mode */
 body.dark-layout .badge-light-primary {
-    background-color: #70B9BE !important;
+    background-color: #B79C6D !important;
     color: #fff !important;
 }
 
@@ -307,7 +307,7 @@ body.dark-layout .breadcrumb {
 }
 
 body.dark-layout .breadcrumb-item a {
-    color: #70B9BE !important;
+    color: #B79C6D !important;
 }
 
 body.dark-layout .breadcrumb-item.active {
@@ -345,14 +345,14 @@ body.dark-layout .pagination .page-link {
 }
 
 body.dark-layout .pagination .page-link:hover {
-    background-color: #70B9BE !important;
-    border-color: #70B9BE !important;
+    background-color: #B79C6D !important;
+    border-color: #B79C6D !important;
     color: #fff !important;
 }
 
 body.dark-layout .pagination .page-item.active .page-link {
-    background-color: #70B9BE !important;
-    border-color: #70B9BE !important;
+    background-color: #B79C6D !important;
+    border-color: #B79C6D !important;
 }
 
 /* Dropdown Dark Mode */
@@ -384,5 +384,5 @@ body.dark-layout .nav-link {
 }
 
 body.dark-layout .nav-link:hover {
-    color: #70B9BE !important;
+    color: #B79C6D !important;
 }

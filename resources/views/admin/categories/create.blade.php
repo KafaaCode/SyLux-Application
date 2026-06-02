@@ -5,7 +5,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0" style="color: #70B9BE; font-weight: bold;">إضافة فئة جديدة</h2>
+                <h2 class="content-header-title float-left mb-0" style="color: #B79C6D; font-weight: bold;">إضافة فئة جديدة</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">الرئيسية</a></li>
@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="country_id" class="form-label">
                                                     الدولة <span class="text-danger">*</span>
@@ -103,9 +103,9 @@
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> -->
                                         
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="specialization_id" class="form-label">
                                                     التخصص <span class="text-danger">*</span>
@@ -125,7 +125,7 @@
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> -->
                                         
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -276,12 +276,12 @@
 }
 
 .image-upload-area:hover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #f0f8f9;
 }
 
 .image-upload-area.dragover {
-    border-color: #70B9BE;
+    border-color: #B79C6D;
     background-color: #e8f4f5;
 }
 
@@ -296,7 +296,7 @@
 }
 
 .card-title {
-    color: #70B9BE;
+    color: #B79C6D;
     font-weight: 600;
 }
 
@@ -417,27 +417,6 @@ $(document).ready(function() {
         };
         reader.readAsDataURL(file);
     }
-
-    // Form validation
-    $('#categoryForm').on('submit', function(e) {
-        const requiredFields = ['name', 'country_id', 'specialization_id'];
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            const input = $(`[name="${field}"]`);
-            if (!input.val()) {
-                input.addClass('is-invalid');
-                isValid = false;
-            } else {
-                input.removeClass('is-invalid');
-            }
-        });
-
-        if (!isValid) {
-            e.preventDefault();
-            alert('يرجى ملء جميع الحقول المطلوبة');
-        }
-    });
 
     // Real-time validation
     $('input[required], select[required]').on('blur', function() {

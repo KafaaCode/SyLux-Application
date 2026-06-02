@@ -8,15 +8,15 @@
 <rect x="28" y="94" width="144" height="1" fill="#EBEDF5"/>
 <path d="M0 40H200V4C200 1.79086 198.209 0 196 0H4C1.79086 0 0 1.79086 0 4V40Z" fill="url(#paint0_linear)"/>
 <g filter="url(#filter1_d)">
-<rect x="147" y="105" width="16" height="9" rx="2" fill="#70B9BE"/>
+<rect x="147" y="105" width="16" height="9" rx="2" fill="#B79C6D"/>
 </g>
 <rect x="95.5" y="105.5" width="46" height="8" rx="1.5" stroke="#D9DDEA"/>
 <rect x="152" y="109" width="6" height="1" rx="0.5" fill="white"/>
 <rect x="37" y="106" width="21" height="2" rx="1" fill="#D9DDEA"/>
 <rect x="37" y="111" width="12" height="2" rx="1" fill="#D9DDEA"/>
-<rect x="40" y="48" width="6" height="6" rx="3" fill="#70B9BE"/>
-<rect x="40" y="62" width="21" height="2" rx="1" fill="#70B9BE"/>
-<rect x="40" y="69" width="12" height="2" rx="1" fill="#70B9BE"/>
+<rect x="40" y="48" width="6" height="6" rx="3" fill="#B79C6D"/>
+<rect x="40" y="62" width="21" height="2" rx="1" fill="#B79C6D"/>
+<rect x="40" y="69" width="12" height="2" rx="1" fill="#B79C6D"/>
 <rect x="77" y="55" width="21" height="2" rx="1" fill="#D9DDEA"/>
 <rect x="108" y="55" width="21" height="2" rx="1" fill="#D9DDEA"/>
 <rect x="77" y="48" width="17" height="2" rx="1" fill="#71869D"/>

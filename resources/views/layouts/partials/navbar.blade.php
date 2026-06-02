@@ -219,7 +219,7 @@
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     @if (auth()->user()->hasRole('Admin'))
                       <li>
-                        <a class="dropdown-item" href="/admin">
+                        <a class="dropdown-item" href="{{ route('admin.index') }}">
                           <i class="bi bi-speedometer2 me-2"></i> {{ __('messages.dashboard') }}
                         </a>
                       </li>

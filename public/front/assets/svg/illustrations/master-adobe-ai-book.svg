@@ -45,11 +45,11 @@
 <stop offset="1" stop-color="#0E39A1"/>
 </linearGradient>
 <linearGradient id="paint3_linear" x1="243.506" y1="-31.6057" x2="237.88" y2="78.675" gradientUnits="userSpaceOnUse">
-<stop offset="1.33195e-07" stop-color="#70B9BE"/>
+<stop offset="1.33195e-07" stop-color="#B79C6D"/>
 <stop offset="1" stop-color="#47DDFC"/>
 </linearGradient>
 <linearGradient id="paint4_linear" x1="247.35" y1="-23.7122" x2="243.488" y2="51.9982" gradientUnits="userSpaceOnUse">
-<stop offset="1.33195e-07" stop-color="#70B9BE"/>
+<stop offset="1.33195e-07" stop-color="#B79C6D"/>
 <stop offset="1" stop-color="#47DDFC"/>
 </linearGradient>
 <clipPath id="clip0">
