@@ -41,9 +41,8 @@ return [
         ],
         'storage_link' => [
             'label' => 'ربط Storage',
-            'description' => 'php artisan storage:link',
-            'command' => 'storage:link',
-            'parameters' => [],
+            'description' => 'storage:link (أو بديل .htaccess إذا symlink معطّل)',
+            'handler' => \App\Support\StorageLinker::class,
             'dangerous' => false,
         ],
         'db_seed' => [

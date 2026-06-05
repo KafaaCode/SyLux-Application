@@ -31,12 +31,17 @@ class DeployController extends Controller
         }
 
         try {
-            $exitCode = Artisan::call(
-                $definition['command'],
-                $definition['parameters'] ?? []
-            );
-
-            $output = trim(Artisan::output());
+            if (!empty($definition['handler'])) {
+                $handler = app($definition['handler']);
+                $output = trim($handler->run());
+                $exitCode = 0;
+            } else {
+                $exitCode = Artisan::call(
+                    $definition['command'],
+                    $definition['parameters'] ?? []
+                );
+                $output = trim(Artisan::output());
+            }
 
             return back()->with('success', "تم التنفيذ بنجاح (exit: {$exitCode})")
                 ->with('output', $output);
