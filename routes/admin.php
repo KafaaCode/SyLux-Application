@@ -25,6 +25,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::post('/', [SectionController::class, 'store'])->name('store');
         Route::put('/{section}', [SectionController::class, 'update'])->name('update');
         Route::patch('/{section}/toggle', [SectionController::class, 'toggle'])->name('toggle');
+        Route::delete('/{section}', [SectionController::class, 'destroy'])->name('destroy');
     });
 
     // Product images routes must be defined before resource routes
