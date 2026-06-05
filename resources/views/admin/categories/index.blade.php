@@ -157,6 +157,7 @@
                                             @endif
                                         </a>
                                     </th>
+                                    <th>القسم</th>
                                     <th>عدد المنتجات</th>
                                     <th>الحالة</th>
                                     <th>الإجراءات</th>
@@ -184,6 +185,7 @@
                                                 <h6 class="mb-0">{{ $category->getTranslatedName() }}</h6>
                                             </div>
                                         </td>
+                                        <td>{{ $category->section->name ?? '—' }}</td>
                                         <td>
                                             <span class="badge badge-light-primary">{{ $category->products->count() }}</span>
                                         </td>

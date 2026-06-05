@@ -2,31 +2,46 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Category;
+use App\Models\Country;
+use App\Models\Section;
+use App\Models\Specialization;
+use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        $countries = [1, 2]; // عدل حسب الدول الموجودة
-        $specializations = [1, 2]; // عدل حسب التخصصات الموجودة
+        $countryIds = Country::pluck('id')->toArray();
+        $specializationIds = Specialization::pluck('id')->toArray();
+        $sections = Section::all();
+
+        if (empty($countryIds) || empty($specializationIds) || $sections->isEmpty()) {
+            return;
+        }
 
         $categories = [
-            'معدات طبية',
-            'أجهزة كهربائية',
-            'معدات صناعية',
-            'مستلزمات مكتبية',
+            ['name' => 'أكياس بلاستيك', 'section' => 'تغليف غذائي'],
+            ['name' => 'علب كرتون', 'section' => 'تغليف تجاري'],
+            ['name' => 'أغلفة طبية', 'section' => 'تغليف طبي'],
+            ['name' => 'لفائف صناعية', 'section' => 'تغليف صناعي'],
+            ['name' => 'سترش غذائي', 'section' => 'تغليف غذائي'],
+            ['name' => 'صناديق شحن', 'section' => 'تغليف تجاري'],
         ];
 
-        foreach ($categories as $name) {
-            Category::create([
-                'name' => $name,
-                'image' => null,
-                'country_id' => $countries[array_rand($countries)],
-                'specialization_id' => $specializations[array_rand($specializations)],
-                'active' => true,
-            ]);
+        foreach ($categories as $item) {
+            $section = $sections->firstWhere('name', $item['section']);
+
+            Category::updateOrCreate(
+                ['name' => $item['name']],
+                [
+                    'image' => null,
+                    'section_id' => $section?->id,
+                    'country_id' => $countryIds[array_rand($countryIds)],
+                    'specialization_id' => $specializationIds[array_rand($specializationIds)],
+                    'active' => true,
+                ]
+            );
         }
     }
 }

@@ -10,7 +10,7 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::latest()->paginate(20);
+        $sections = Section::withCount('categories')->latest()->paginate(20);
 
         return view('admin.sections.index', compact('sections'));
     }

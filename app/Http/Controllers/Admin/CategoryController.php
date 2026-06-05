@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
+use App\Models\Section;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -106,7 +107,7 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        $query = Category::with(['country', 'specialization', 'products']);
+        $query = Category::with(['country', 'specialization', 'section', 'products']);
         
         // Search functionality
         if ($request->filled('search')) {
@@ -174,19 +175,27 @@ class CategoryController extends Controller
     {
         $countries = Country::pluck('name', 'id')->all();
         $specializations = Specialization::pluck('name', 'id')->all();
-        return view('admin.categories.create', compact('countries', 'specializations'));
+        $sections = Section::where('active', 1)->pluck('name', 'id')->all();
+
+        return view('admin.categories.create', compact('countries', 'specializations', 'sections'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|unique:categories,name',
+            'section_id' => 'nullable|exists:sections,id',
+            'country_id' => 'nullable|exists:countries,id',
+            'specialization_id' => 'nullable|exists:specializations,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'active' => 'nullable|boolean',
         ]);
 
         $categoryData = [
             'name' => $request->input('name'),
+            'section_id' => $request->input('section_id'),
+            'country_id' => $request->input('country_id'),
+            'specialization_id' => $request->input('specialization_id'),
             'active' => $request->input('active', 1),
         ];
 
@@ -215,7 +224,7 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $category = Category::with(['translations', 'country', 'specialization', 'products'])->findOrFail($id);
+        $category = Category::with(['translations', 'country', 'specialization', 'section', 'products'])->findOrFail($id);
         return view('admin.categories.show', compact('category'));
     }
 
@@ -224,13 +233,18 @@ class CategoryController extends Controller
         $category = Category::with('translations')->findOrFail($id);
         $countries = Country::pluck('name', 'id')->all();
         $specializations = Specialization::pluck('name', 'id')->all();
-        return view('admin.categories.edit', compact('category', 'countries', 'specializations'));
+        $sections = Section::where('active', 1)->pluck('name', 'id')->all();
+
+        return view('admin.categories.edit', compact('category', 'countries', 'specializations', 'sections'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required|unique:categories,name,' . $id,
+            'section_id' => 'nullable|exists:sections,id',
+            'country_id' => 'nullable|exists:countries,id',
+            'specialization_id' => 'nullable|exists:specializations,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'active' => 'nullable|boolean',
         ]);
@@ -238,6 +252,9 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         
         $category->name = $request->input('name');
+        $category->section_id = $request->input('section_id');
+        $category->country_id = $request->input('country_id');
+        $category->specialization_id = $request->input('specialization_id');
         $category->active = $request->input('active', 1);
         
         if ($request->hasFile('image')) {

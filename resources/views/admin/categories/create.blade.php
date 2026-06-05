@@ -83,50 +83,45 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- <div class="col-md-6">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="country_id" class="form-label">
-                                                    الدولة <span class="text-danger">*</span>
-                                                </label>
-                                                <select id="country_id" 
-                                                        name="country_id" 
-                                                        class="form-control @error('country_id') is-invalid @enderror"
-                                                        required>
+                                                <label for="section_id" class="form-label">القسم</label>
+                                                <select id="section_id" name="section_id" class="form-control @error('section_id') is-invalid @enderror">
+                                                    <option value="">اختر القسم</option>
+                                                    @foreach ($sections as $id => $name)
+                                                        <option value="{{ $id }}" {{ old('section_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('section_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country_id" class="form-label">الدولة</label>
+                                                <select id="country_id" name="country_id" class="form-control @error('country_id') is-invalid @enderror">
                                                     <option value="">اختر الدولة</option>
                                                     @foreach ($countries as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
+                                                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('country_id')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                             </div>
-                                        </div> -->
-                                        
-                                        <!-- <div class="col-md-6">
+                                        </div>
+
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="specialization_id" class="form-label">
-                                                    التخصص <span class="text-danger">*</span>
-                                                </label>
-                                                <select id="specialization_id" 
-                                                        name="specialization_id" 
-                                                        class="form-control @error('specialization_id') is-invalid @enderror"
-                                                        required>
+                                                <label for="specialization_id" class="form-label">التخصص</label>
+                                                <select id="specialization_id" name="specialization_id" class="form-control @error('specialization_id') is-invalid @enderror">
                                                     <option value="">اختر التخصص</option>
                                                     @foreach ($specializations as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('specialization_id') == $id ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
+                                                        <option value="{{ $id }}" {{ old('specialization_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('specialization_id')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                @error('specialization_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                             </div>
-                                        </div> -->
-                                        
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="active" class="form-label">الحالة</label>

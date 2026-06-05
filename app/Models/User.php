@@ -25,7 +25,9 @@ class User extends Authenticatable
         'password',
         'specialization_id',
         'country_id',
-        'status'
+        'status',
+        'is_admin',
+        'fcm_token',
     ];
 
     // العلاقة مع التخصص

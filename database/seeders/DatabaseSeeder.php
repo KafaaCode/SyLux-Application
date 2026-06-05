@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,22 +12,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\Category::truncate();
-        // \App\Models\Product::truncate();
-        // $this->call([
-        //     RoleAndPermissionSeeder::class,
-        //     CategorySeeder::class,
-        //     ProductSeeder::class,
-        // ]);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Schema::disableForeignKeyConstraints();
 
         $this->call([
+            CountrySeeder::class,
+            SpecializationSeeder::class,
             RoleAndPermissionSeeder::class,
+            AppSettingSeeder::class,
+            SectionSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            OrderSeeder::class,
         ]);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        Schema::enableForeignKeyConstraints();
     }
 }

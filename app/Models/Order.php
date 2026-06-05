@@ -8,12 +8,13 @@ use Illuminate\Support\Str;
 class Order extends Model
 {
     protected $fillable = [
+        'serial_number',
         'user_id',
         'total_amount',
         'delivery_time',
         'reply_message',
         'status',
-        'total_price'
+        'total_price',
     ];
 
     protected static function booted()

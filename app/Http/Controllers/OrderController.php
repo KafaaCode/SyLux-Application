@@ -210,7 +210,7 @@ class OrderController extends Controller
                 'user_id' => auth()->id(),
                 'total_amount' => $total,
                 'total_price' => $total,
-                'status' => 'Pending',
+                'status' => 'pending',
             ]);
             
             // إنشاء تفاصيل الطلب
