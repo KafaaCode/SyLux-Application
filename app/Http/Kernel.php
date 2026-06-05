@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'deploy.secret' => \App\Http\Middleware\VerifyDeploySecret::class,
         'setlocale' => \App\Http\Middleware\SetLocale::class,
         'api.locale' => \App\Http\Middleware\SetApiLocale::class,
 
