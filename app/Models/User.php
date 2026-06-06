@@ -78,7 +78,7 @@ class User extends Authenticatable
     {
         return $this->isAdmin()
             ? route('admin.index')
-            : route('dashboard');
+            : route('orders.index');
     }
 
     public function canAccessUrl(?string $url): bool

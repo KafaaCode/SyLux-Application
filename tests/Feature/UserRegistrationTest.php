@@ -16,7 +16,7 @@ class UserRegistrationTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $response->assertRedirect('/dashboard'); // Assuming a successful registration redirects to '/home'
+        $response->assertRedirect('/orders');
         $this->assertAuthenticated(); // Check if the user is authenticated after registration
     }
 }
