@@ -38,7 +38,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // Direct public storage — works on shared hosting without symlink()
+            'root' => public_path('storage'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -77,6 +78,7 @@ return [
     */
 
     'links' => [
+        // Optional for local dev with symlink support; production uses public/storage directly
         public_path('storage') => storage_path('app/public'),
     ],
 

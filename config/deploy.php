@@ -40,8 +40,8 @@ return [
             'dangerous' => false,
         ],
         'storage_link' => [
-            'label' => 'ربط Storage',
-            'description' => 'storage:link (أو بديل .htaccess إذا symlink معطّل)',
+            'label' => 'تهيئة Storage',
+            'description' => 'إنشاء public/storage + نقل الملفات القديمة (بدون symlink)',
             'handler' => \App\Support\StorageLinker::class,
             'dangerous' => false,
         ],

@@ -6,137 +6,108 @@ use Illuminate\Support\Facades\File;
 
 class StorageLinker
 {
+    private const UPLOAD_DIRS = ['categories', 'products', 'sections'];
+
     public function run(): string
     {
-        $target = storage_path('app/public');
-        $link = public_path('storage');
+        $publicStorage = public_path('storage');
+        $legacyStorage = storage_path('app/public');
+        $messages = [];
 
-        if (!File::isDirectory($target)) {
-            File::makeDirectory($target, 0755, true);
+        $this->preparePublicStorageDirectory($publicStorage);
+
+        foreach (self::UPLOAD_DIRS as $dir) {
+            File::ensureDirectoryExists($publicStorage . DIRECTORY_SEPARATOR . $dir, 0755);
         }
 
-        $targetReal = realpath($target);
-
-        if ($this->linkPointsTo($link, $targetReal)) {
-            return "الرابط موجود ويعمل:\n{$link} → {$targetReal}";
+        $migrated = $this->migrateLegacyFiles($legacyStorage, $publicStorage);
+        if ($migrated > 0) {
+            $messages[] = "تم نقل {$migrated} ملف من storage/app/public إلى public/storage";
         }
 
-        $this->removeLinkPath($link);
+        $this->cleanupHtaccessFallback($publicStorage);
 
-        if (function_exists('symlink')) {
-            try {
-                if (@symlink($target, $link) && $this->linkPointsTo($link, $targetReal)) {
-                    return "تم إنشاء symlink بنجاح:\n{$link} → {$target}";
-                }
-            } catch (\Throwable) {
-                // Fall through to htaccess alternative
-            }
-        }
-
-        return $this->createHtaccessFallback($target, $link);
-    }
-
-    private function linkPointsTo(string $link, ?string $targetReal): bool
-    {
-        if (!$targetReal || !file_exists($link)) {
-            return false;
-        }
-
-        $linkReal = realpath($link);
-
-        return $linkReal && $linkReal === $targetReal;
-    }
-
-    private function createHtaccessFallback(string $target, string $link): string
-    {
-        $messages = ['symlink() غير متاح على هذا السيرفر — تم تفعيل البديل عبر .htaccess.'];
-
-        $this->removeLinkPath($link);
-
-        if (!is_dir($link)) {
-            @mkdir($link, 0755, true);
-        }
-
-        $storageHtaccess = <<<'HTACCESS'
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /storage/
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ ../../storage/app/public/$1 [L]
-</IfModule>
-HTACCESS;
-
-        File::put($link . DIRECTORY_SEPARATOR . '.htaccess', $storageHtaccess);
-        $messages[] = 'تم إنشاء: public/storage/.htaccess';
-
-        $this->ensurePublicHtaccessRule();
-
-        $messages[] = 'تم تحديث: public/.htaccess';
-        $messages[] = "مجلد الملفات: {$target}";
+        $messages[] = 'وضع التخزين: مباشر في public/storage (بدون symlink وبدون .htaccess)';
+        $messages[] = "المسار: {$publicStorage}";
+        $messages[] = 'الصور تُخدم كملفات ثابتة عبر /storage/...';
 
         return implode("\n", $messages);
     }
 
-    private function ensurePublicHtaccessRule(): void
+    private function preparePublicStorageDirectory(string $publicStorage): void
     {
-        $htaccessPath = public_path('.htaccess');
-        $markerBegin = '# BEGIN SyLux Storage Fallback';
-
-        if (File::exists($htaccessPath) && str_contains(File::get($htaccessPath), $markerBegin)) {
-            return;
+        if ($this->isReparsePoint($publicStorage)) {
+            $this->removeReparsePoint($publicStorage);
         }
 
-        $rules = <<<'RULES'
-
-# BEGIN SyLux Storage Fallback
-<IfModule mod_rewrite.c>
-    RewriteCond %{REQUEST_URI} ^/storage/(.+)$
-    RewriteCond %{DOCUMENT_ROOT}/../storage/app/public/%1 -f
-    RewriteRule ^storage/(.+)$ ../storage/app/public/$1 [L]
-</IfModule>
-# END SyLux Storage Fallback
-RULES;
-
-        $content = File::exists($htaccessPath) ? File::get($htaccessPath) : '';
-        $insertBefore = 'RewriteRule ^ index.php';
-
-        if (str_contains($content, $insertBefore)) {
-            $content = str_replace($insertBefore, ltrim($rules) . "\n\n    " . $insertBefore, $content);
-        } else {
-            $content .= $rules;
+        if (File::exists($publicStorage . '/.htaccess')) {
+            File::delete($publicStorage . '/.htaccess');
         }
 
-        File::put($htaccessPath, $content);
+        File::ensureDirectoryExists($publicStorage, 0755);
     }
 
-    private function removeLinkPath(string $path): void
+    private function migrateLegacyFiles(string $legacyStorage, string $publicStorage): int
     {
-        if (!file_exists($path) && !is_link($path)) {
-            return;
+        if (!File::isDirectory($legacyStorage)) {
+            return 0;
         }
 
+        $count = 0;
+
+        foreach (File::allFiles($legacyStorage) as $file) {
+            $relativePath = $file->getRelativePathname();
+            $destination = $publicStorage . DIRECTORY_SEPARATOR . $relativePath;
+
+            if (File::exists($destination)) {
+                continue;
+            }
+
+            File::ensureDirectoryExists(dirname($destination), 0755);
+            File::copy($file->getPathname(), $destination);
+            $count++;
+        }
+
+        return $count;
+    }
+
+    private function cleanupHtaccessFallback(string $publicStorage): void
+    {
+        $mainHtaccess = public_path('.htaccess');
+        $markerBegin = '# BEGIN SyLux Storage Fallback';
+        $markerEnd = '# END SyLux Storage Fallback';
+
+        if (File::exists($mainHtaccess)) {
+            $content = File::get($mainHtaccess);
+            if (str_contains($content, $markerBegin)) {
+                $pattern = '/' . preg_quote($markerBegin, '/') . '.*?' . preg_quote($markerEnd, '/') . '\s*/s';
+                File::put($mainHtaccess, preg_replace($pattern, '', $content));
+            }
+        }
+
+        if (File::exists($publicStorage . '/.htaccess')) {
+            File::delete($publicStorage . '/.htaccess');
+        }
+    }
+
+    private function isReparsePoint(string $path): bool
+    {
+        if (!file_exists($path)) {
+            return false;
+        }
+
+        return is_link($path) || @readlink($path) !== false;
+    }
+
+    private function removeReparsePoint(string $path): void
+    {
         if (is_link($path)) {
             @unlink($path);
             return;
         }
 
         if (is_dir($path)) {
-            // Windows junction / symlink directory
-            if (@readlink($path) !== false) {
-                @rmdir($path);
-                return;
-            }
-
-            // Fallback storage directory (only contains .htaccess)
-            if (File::exists($path . '/.htaccess')) {
-                @unlink($path . '/.htaccess');
-            }
-
             @rmdir($path);
-            return;
         }
-
-        @unlink($path);
     }
 }
