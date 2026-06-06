@@ -48,7 +48,11 @@ Route::resource('products', ProductController::class);
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return redirect()->route('admin.index');
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
+
+    return redirect(auth()->user()->defaultHomeUrl());
 });
 
 Route::get('/privacy', function () {

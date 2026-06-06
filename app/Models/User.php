@@ -66,5 +66,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->is_admin || $this->hasRole('Admin');
+    }
+
+    public function defaultHomeUrl(): string
+    {
+        return $this->isAdmin()
+            ? route('admin.index')
+            : route('dashboard');
+    }
+
+    public function canAccessUrl(?string $url): bool
+    {
+        if (!$url) {
+            return false;
+        }
+
+        if (str_contains($url, '/admin')) {
+            return $this->isAdmin();
+        }
+
+        return true;
+    }
 }

@@ -43,7 +43,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         $user = User::updateOrCreate(
             ['email' => 'user@example.com'],
-            ['name' => 'User', 'password' => Hash::make('password')]
+            ['name' => 'User', 'password' => Hash::make('password'), 'is_admin' => false]
         );
 
         $user->assignRole($userRole);
