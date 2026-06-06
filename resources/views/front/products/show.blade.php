@@ -26,18 +26,17 @@
                 @php
                     $allImages = collect();
                     if ($product->image) {
-                        $allImages->push((object)['path' => $product->image, 'full_path' => asset('storage/' . $product->image)]);
+                        $allImages->push((object)['path' => $product->image, 'full_path' => \App\Support\MediaHelper::storageUrl($product->image)]);
                     }
                     if ($product->images && $product->images->count() > 0) {
                         foreach ($product->images as $img) {
                             if (!$product->image || $img->path !== $product->image) {
-                                $allImages->push((object)['path' => $img->path, 'full_path' => asset('storage/' . $img->path)]);
+                                $allImages->push((object)['path' => $img->path, 'full_path' => \App\Support\MediaHelper::storageUrl($img->path)]);
                             }
                         }
                     }
-                    // If no images at all, add placeholder
                     if ($allImages->count() == 0) {
-                        $allImages->push((object)['path' => 'logo.png', 'full_path' => asset('logo.png')]);
+                        $allImages->push((object)['path' => 'placeholder', 'full_path' => \App\Support\MediaHelper::productImage($product)]);
                     }
                 @endphp
 

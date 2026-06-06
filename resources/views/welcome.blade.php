@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
-@section('title', 'من نحن')
+@section('title', __('messages.home'))
 
 @section('content')
     <!-- Hero -->
     <div class="d-lg-flex position-relative">
       <div class="container d-lg-flex align-items-lg-center content-space-t-3 content-space-lg-0 min-vh-lg-100">
-        <!-- Heading -->
         <div class="w-100">
           <div class="row">
             <div class="col-lg-5" style="direction: rtl">
@@ -28,18 +27,14 @@
                 <p class="lead">{{ __('messages.packaging_solutions_description') }}</p>
               </div>
 
-
               <div class="d-grid d-sm-flex gap-3">
-                <a class="btn btn-primary btn-transition px-6" href="#category">{{ __('messages.browse_products') }}</a>
+                <a class="btn btn-primary btn-transition px-6" href="{{ route('products.web.index') }}">{{ __('messages.browse_products') }}</a>
+                <a class="btn btn-outline-primary btn-transition px-6" href="#category">{{ __('messages.categories') }}</a>
               </div>
             </div>
-            <!-- End Col -->
           </div>
-          <!-- End Row -->
         </div>
-        <!-- End Title & Description -->
 
-        <!-- SVG Shape -->
         <div class="col-lg-7 col-xl-6 d-none d-lg-block position-absolute top-0 end-0 pe-0"
           style="margin-top: 6.75rem;">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1137.5 979.2">
@@ -53,47 +48,91 @@
               <use xlink:href="#mainHeroSVG1" />
             </clipPath>
             <g transform="matrix(1 0 0 1 0 0)" clip-path="url(#mainHeroSVG2)">
-              <!-- <image width="750" height="750" xlink:href="front/assets/img/750x750/img2.jpg" transform="matrix(1.4462 0 0 1.4448 52.8755 0)"></image> -->
               <image width="750" height="750" xlink:href="images/كيس _ ابيض مسمط.png"
                 transform="matrix(1.4462 0 0 1.4448 52.8755 0)"></image>
             </g>
           </svg>
         </div>
-        <!-- End SVG Shape -->
       </div>
     </div>
-    <!-- End Hero -->
 
-    <!-- Card Grid -->
+    @if(isset($sections) && $sections->isNotEmpty())
+    <div id="sections" class="container content-space-2">
+      <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+        <h2>{{ __('messages.sections') }}</h2>
+      </div>
+
+      <div class="row gx-lg-7">
+        @foreach($sections as $index => $section)
+          <div class="col-sm-6 col-lg-3 mb-5">
+            <a class="card card-flush h-100" href="{{ route('categories.web.index') }}" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+              <img class="card-img" src="{{ \App\Support\MediaHelper::sectionImage($section) }}" alt="{{ $section->name }}">
+              <div class="card-body text-center">
+                <h4 class="card-title text-inherit mb-1">{{ $section->name }}</h4>
+                <span class="card-subtitle text-body">{{ $section->categories_count }} {{ __('messages.categories') }}</span>
+              </div>
+            </a>
+          </div>
+        @endforeach
+      </div>
+    </div>
+    @endif
+
+    @if(isset($featuredProducts) && $featuredProducts->isNotEmpty())
+    <div id="products" class="container content-space-2 content-space-lg-3">
+      <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+        <h2>{{ __('messages.featured_products') }}</h2>
+      </div>
+
+      <div class="row gx-lg-7">
+        @foreach($featuredProducts as $index => $product)
+          <div class="col-sm-6 col-lg-3 mb-5">
+            <a class="card card-flush h-100" href="{{ route('products.web.show', $product) }}" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+              <img class="card-img" src="{{ \App\Support\MediaHelper::productImage($product) }}" alt="{{ $product->getTranslatedName() }}">
+              <div class="card-body">
+                <span class="card-subtitle text-body">{{ __('messages.discover_more') }}</span>
+                <h4 class="card-title text-inherit">{{ $product->getTranslatedName() }}</h4>
+              </div>
+            </a>
+          </div>
+        @endforeach
+      </div>
+
+      <div class="text-center">
+        <a class="btn btn-outline-primary" href="{{ route('products.web.index') }}">{{ __('messages.browse_products') }}</a>
+      </div>
+    </div>
+    @endif
+
     <div id="category" class="container content-space-2 content-space-lg-3">
-      <!-- Heading -->
       <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
         <h2>{{ __('messages.categories') }}</h2>
       </div>
-      <!-- End Heading -->
 
-      <div class="overflow-hidden">
-        <div class="row gx-lg-7">
-          @foreach($categories as $index => $category)
-        <div class="col-sm-6 col-lg-4 mb-5">
-        <!-- Card -->
-        <a class="card card-flush h-100" href="{{ route('categories.web.show', $category->id) }}" data-aos="fade-up"
-          data-aos-delay="{{ $index * 100 }}">
-
-          <img class="card-img" src="{{ asset('storage/' . $category->image) }}"
-          alt="{{ $category->getTranslatedName() }}">
-
-          <div class="card-body">
-          <span class="card-subtitle text-body">{{ __('messages.discover_more') }}</span>
-          <h4 class="card-title text-inherit">{{ $category->getTranslatedName() }}</h4>
+      @if($categories->isEmpty())
+        <div class="text-center py-5">
+          <h4 class="text-muted">{{ __('messages.no_categories') }}</h4>
+        </div>
+      @else
+        <div class="overflow-hidden">
+          <div class="row gx-lg-7">
+            @foreach($categories as $index => $category)
+              <div class="col-sm-6 col-lg-4 mb-5">
+                <a class="card card-flush h-100" href="{{ route('categories.web.show', $category) }}" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                  <img class="card-img" src="{{ \App\Support\MediaHelper::categoryImage($category) }}" alt="{{ $category->getTranslatedName() }}">
+                  <div class="card-body">
+                    <span class="card-subtitle text-body">{{ __('messages.discover_more') }}</span>
+                    <h4 class="card-title text-inherit">{{ $category->getTranslatedName() }}</h4>
+                  </div>
+                </a>
+              </div>
+            @endforeach
           </div>
-        </a>
         </div>
-      @endforeach
+
+        <div class="text-center">
+          <a class="btn btn-outline-primary" href="{{ route('categories.web.index') }}">{{ __('messages.view_all_categories') }}</a>
         </div>
-      </div>
-
-
+      @endif
     </div>
-    <!-- End Card Grid -->
 @endsection

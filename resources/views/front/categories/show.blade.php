@@ -33,7 +33,7 @@
                     <div class="col-sm-6 col-lg-4 mb-5">
                         <!-- Card -->
                         <a class="card card-flush h-100" href="{{ route('products.web.show',$product->id) }}" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                            <img class="card-img" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->getTranslatedName() }}">
+                            <img class="card-img" src="{{ \App\Support\MediaHelper::productImage($product) }}" alt="{{ $product->getTranslatedName() }}">
                             <div class="card-body">
                                 <span class="card-subtitle text-body">اكتشف المزيد</span>
                                 <h4 class="card-title text-inherit">{{ $product->getTranslatedName() }}</h4>

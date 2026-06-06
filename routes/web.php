@@ -11,7 +11,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SupportController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,16 +39,8 @@ Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edi
 
 
 Route::get('user-create', [UserController::class, 'create_user']);
-Route::resource('products', ProductController::class);
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    if (!auth()->check()) {
-        return redirect()->route('login');
-    }
-
-    return redirect(auth()->user()->defaultHomeUrl());
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/privacy', function () {
     return view('front.privacy.privacy');
@@ -64,7 +55,6 @@ Route::get('/about', function () {
 Route::post('/contact', [SupportController::class, 'storeWeb'])->name('support.store');
 
 
-Route::get('/categories', [CategoryController::class, 'webIndex'])->name('categories.web.index');
 
 // Language routes
 Route::get('/language/{locale}', [LanguageController::class, 'switchLanguage'])->name('language.switch');
@@ -79,11 +69,10 @@ Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear
 Route::get('/orders', [OrderController::class, 'indexFront'])->middleware('auth')->name('orders.index');
 Route::post('/orders', [OrderController::class, 'storeWeb'])->middleware('auth')->name('orders.store');
 
-// Route::middleware(['auth'])->group(function () {
-Route::get('/web-categories/{id}', [CategoryController::class, 'webshow'])->name('categories.web.show');
+Route::get('/categories', [CategoryController::class, 'webIndex'])->name('categories.web.index');
+Route::get('/categories/{category}', [CategoryController::class, 'webshow'])->name('categories.web.show');
 Route::get('/products', [ProductController::class, 'webIndex'])->name('products.web.index');
-Route::get('products/{product}', [ProductController::class, 'webShow'])->name('products.web.show');
-// });
+Route::get('/products/{product}', [ProductController::class, 'webShow'])->name('products.web.show');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

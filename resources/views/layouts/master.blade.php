@@ -70,7 +70,7 @@
             <div class="row g-4">
                 <!-- Logo & Contact -->
                 <div class="col-lg-3">
-                    <a class="navbar-brand mb-3 d-block" href="/">
+                    <a class="navbar-brand mb-3 d-block" href="{{ route('home') }}">
                         <img src="{{ asset('images/init_page.png') }}" alt="{{ config('app.name') }}" class="img-fluid">
                     </a>
                     @php
@@ -93,10 +93,10 @@
                 <div class="col-sm-3">
                     <h5 class="mb-3">{{ __('messages.company') }}</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="link-light text-decoration-none">{{ __('messages.about_us') }}</a></li>
+                        <li><a href="{{ route('about') }}" class="link-light text-decoration-none">{{ __('messages.about_us') }}</a></li>
                         <li><a href="{{ route('products.web.index') }}"
                                 class="link-light text-decoration-none">{{ __('messages.products') }}</a></li>
-                        <li><a href="#" class="link-light text-decoration-none">{{ __('messages.contact_us') }}</a></li>
+                        <li><a href="{{ route('contact') }}" class="link-light text-decoration-none">{{ __('messages.contact_us') }}</a></li>
                         <li><a href="{{ route('privacy') }}"
                                 class="link-light text-decoration-none">{{ __('messages.privacy_policy') }}</a></li>
                         <li><a href="#" class="link-light text-decoration-none">{{ __('messages.terms') }}</a></li>

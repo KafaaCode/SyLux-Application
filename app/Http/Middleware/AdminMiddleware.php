@@ -17,7 +17,7 @@ class AdminMiddleware
 
         if (!Auth::user()->isAdmin()) {
             return redirect()
-                ->route('orders.index')
+                ->route('home')
                 ->with('error', 'ليس لديك صلاحية الوصول إلى لوحة الإدارة.');
         }
 

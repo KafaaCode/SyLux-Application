@@ -1,7 +1,7 @@
 {{-- resources/views/about.blade.php --}}
 @extends('layouts.master')
 
-@section('title', 'من نحن')
+@section('title', __('messages.categories'))
 
 @section('content')
     <main id="content" role="main">
@@ -11,7 +11,7 @@
         <div id="category" class="container content-space-2 content-space-lg-3">
             <!-- Heading -->
             <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
-                <h2>الفئات</h2>
+                <h2>{{ __('messages.categories') }}</h2>
             </div>
             <!-- End Heading -->
 
@@ -23,7 +23,7 @@
                             <a class="card card-flush h-100" href="{{ route('categories.web.show', $category->id) }}"
                                 data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
 
-                                <img class="card-img" src="{{ asset('storage/' . $category->image) }}"
+                                <img class="card-img" src="{{ \App\Support\MediaHelper::categoryImage($category) }}"
                                     alt="{{ $category->getTranslatedName() }}">
 
                                 <div class="card-body">

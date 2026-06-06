@@ -5,28 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Helpers\ApiTranslationHelper;
+use App\Services\Front\CatalogService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
 
-    public function webIndex()
+    public function webIndex(CatalogService $catalog)
     {
-        $products = Product::with(['category', 'translations', 'images'])
-            ->where('active', 1)
-            ->orderBy('created_at', 'desc')
-            ->get();
-        
-        $categories = Category::where('active', true)->get();
-        
-        return view('front.products.index', compact('products', 'categories'));
+        return view('front.products.index', [
+            'products' => $catalog->activeProducts(),
+            'categories' => $catalog->activeCategories(),
+        ]);
     }
 
-    public function webShow(Product $product)
+    public function webShow(Product $product, CatalogService $catalog)
     {
-        $product->load(['images', 'category', 'translations']);
-        return view('front.products.show', compact('product'));
+        try {
+            $product = $catalog->findActiveProduct($product);
+
+            return view('front.products.show', compact('product'));
+        } catch (ModelNotFoundException) {
+            abort(404);
+        }
     }
     
     // api

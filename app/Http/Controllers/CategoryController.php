@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Helpers\ApiTranslationHelper;
+use App\Services\Front\CatalogService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -115,6 +117,26 @@ class CategoryController extends Controller
             
         } catch (\Exception $e) {
             return ApiTranslationHelper::errorResponse('حدث خطأ في استرجاع اللغات المدعومة', 500);
+        }
+    }
+
+    public function webIndex(CatalogService $catalog)
+    {
+        return view('front.categories.index', [
+            'categories' => $catalog->activeCategories(),
+        ]);
+    }
+
+    public function webshow(Category $category, CatalogService $catalog)
+    {
+        if (!$category->active) {
+            abort(404);
+        }
+
+        try {
+            return view('front.categories.show', $catalog->categoryWithProducts($category->id));
+        } catch (ModelNotFoundException) {
+            abort(404);
         }
     }
 }

@@ -112,7 +112,7 @@
   <div class="container">
     <nav class="js-mega-menu navbar-nav-wrap">
       <!-- Default Logo -->
-      <a class="navbar-brand" href="/" aria-label="Front">
+      <a class="navbar-brand" href="{{ route('home') }}" aria-label="Front">
         <img class="navbar-brand-logo" src="{{ asset('images/init_page.png') }}" alt="Logo">
       </a>
       <!-- End Default Logo -->
@@ -136,13 +136,19 @@
             <!-- الصفحة الرئيسية -->
             <li class="nav-item">
               <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                href="{{ url('/') }}">{{ __('messages.home') }}</a>
+                href="{{ route('home') }}">{{ __('messages.home') }}</a>
+            </li>
+
+            <!-- المنتجات -->
+            <li class="nav-item">
+              <a class="nav-link {{ request()->is('products*') ? 'active' : '' }}"
+                href="{{ route('products.web.index') }}">{{ __('messages.products') }}</a>
             </li>
 
             <!-- الفئات -->
             <li class="nav-item">
               <a class="nav-link {{ request()->is('categories*') ? 'active' : '' }}"
-                href="/categories">{{ __('messages.categories') }}</a>
+                href="{{ route('categories.web.index') }}">{{ __('messages.categories') }}</a>
             </li>
 
             <!-- تواصل معنا -->

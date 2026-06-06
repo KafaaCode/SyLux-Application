@@ -2,21 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Services\Front\HomeService;
 
 class HomeController extends Controller
 {
-    /**
-     * Display the home page.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function index(HomeService $homeService)
     {
-        $categories = Category::all();
-        return view('welcome', [
-            'categories' => $categories
-        ]);
+        return view('welcome', $homeService->getHomePageData());
     }
 }
