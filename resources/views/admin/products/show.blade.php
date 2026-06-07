@@ -153,10 +153,60 @@
                                 </div>
                                 <div class="info-value">{{ $product->updated_at->format('Y-m-d H:i') }}</div>
                             </div>
+
+                            @if($product->color)
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-palette text-primary"></i>
+                                    اللون:
+                                </div>
+                                <div class="info-value">{{ $product->color }}</div>
+                            </div>
+                            @endif
+
+                            @if($product->material)
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-layer-group text-secondary"></i>
+                                    المادة:
+                                </div>
+                                <div class="info-value">{{ $product->material }}</div>
+                            </div>
+                            @endif
+
+                            @if($product->available_sizes)
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-ruler text-warning"></i>
+                                    المقاسات:
+                                </div>
+                                <div class="info-value">{{ $product->available_sizes }}</div>
+                            </div>
+                            @endif
+
+                            @if($product->delivery_duration)
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-truck text-info"></i>
+                                    مدة التوصيل:
+                                </div>
+                                <div class="info-value">{{ $product->delivery_duration }}</div>
+                            </div>
+                            @endif
+
+                            @if($product->fasil_method)
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-cogs text-dark"></i>
+                                    طريقة الفصل:
+                                </div>
+                                <div class="info-value">{{ $product->fasil_method }}</div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-                
+
                 @if($product->description)
                     <div class="row mt-4">
                         <div class="col-12">
@@ -174,8 +224,154 @@
                 @endif
             </div>
         </div>
+
+        <!-- Related Relations -->
+        @if($product->discounts->count() > 0 || $product->groups->count() > 0 || $product->reviews->count() > 0 || $product->favorites->count() > 0)
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-link text-primary"></i>
+                    العلاقات المرتبطة
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Discounts -->
+                @if($product->discounts->count() > 0)
+                <div class="relation-section mb-4">
+                    <h6 class="relation-title">
+                        <i class="fa-solid fa-tags text-success"></i>
+                        الخصومات ({{ $product->discounts->count() }})
+                    </h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>نسبة الخصم</th>
+                                    <th>عام</th>
+                                    <th>الحالة</th>
+                                    <th>تاريخ البدء</th>
+                                    <th>تاريخ الانتهاء</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($product->discounts as $discount)
+                                <tr>
+                                    <td><span class="badge badge-success">{{ $discount->discount_percentage }}%</span></td>
+                                    <td>{{ $discount->apply_to_all ? 'نعم' : 'لا' }}</td>
+                                    <td>
+                                        @if($discount->active)
+                                            <span class="badge badge-success">نشط</span>
+                                        @else
+                                            <span class="badge badge-danger">غير نشط</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $discount->start_time ? $discount->start_time->format('Y-m-d H:i') : '-' }}</td>
+                                    <td>{{ $discount->end_time ? $discount->end_time->format('Y-m-d H:i') : '-' }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @endif
+
+                <!-- Groups -->
+                @if($product->groups->count() > 0)
+                <div class="relation-section mb-4">
+                    <h6 class="relation-title">
+                        <i class="fa-solid fa-object-group text-info"></i>
+                        المجموعات ({{ $product->groups->count() }})
+                    </h6>
+                    <div class="row">
+                        @foreach($product->groups as $group)
+                        <div class="col-md-6 mb-2">
+                            <div class="group-card border rounded p-2">
+                                <strong>{{ $group->name }}</strong>
+                                <span class="badge {{ $group->active ? 'badge-success' : 'badge-danger' }} float-right">
+                                    {{ $group->active ? 'نشط' : 'غير نشط' }}
+                                </span>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
+                <!-- Reviews -->
+                @if($product->reviews->count() > 0)
+                <div class="relation-section mb-4">
+                    <h6 class="relation-title">
+                        <i class="fa-solid fa-star text-warning"></i>
+                        التقييمات ({{ $product->reviews->count() }})
+                    </h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>المستخدم</th>
+                                    <th>التقييم</th>
+                                    <th>المراجعة</th>
+                                    <th>الحالة</th>
+                                    <th>التاريخ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($product->reviews as $review)
+                                <tr>
+                                    <td>{{ $review->user->name ?? '-' }}</td>
+                                    <td>
+                                        <span class="text-warning">
+                                            @for($i = 1; $i <= 5; $i++)
+                                                <i class="fa-solid fa-star{{ $i <= $review->rating ? '' : '-o' }}"></i>
+                                            @endfor
+                                        </span>
+                                    </td>
+                                    <td>{{ Str::limit($review->review, 40) }}</td>
+                                    <td>
+                                        @if($review->status === 'pending')
+                                            <span class="badge badge-warning">معلق</span>
+                                        @elseif($review->status === 'approved')
+                                            <span class="badge badge-success">مقبول</span>
+                                        @else
+                                            <span class="badge badge-danger">مرفوض</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $review->created_at->format('Y-m-d') }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @endif
+
+                <!-- Favorites -->
+                @if($product->favorites->count() > 0)
+                <div class="relation-section">
+                    <h6 class="relation-title">
+                        <i class="fa-solid fa-heart text-danger"></i>
+                        المفضلة ({{ $product->favorites->count() }})
+                    </h6>
+                    <div class="row">
+                        @foreach($product->favorites->take(10) as $favorite)
+                        <div class="col-md-4 mb-2">
+                            <span class="badge badge-light-secondary">
+                                <i class="fa-solid fa-user text-muted"></i>
+                                {{ $favorite->user->name ?? '-' }}
+                            </span>
+                        </div>
+                        @endforeach
+                    </div>
+                    @if($product->favorites->count() > 10)
+                        <small class="text-muted">و {{ $product->favorites->count() - 10 }} آخرون...</small>
+                    @endif
+                </div>
+                @endif
+            </div>
+        </div>
+        @endif
     </div>
-    
+
     <!-- Sidebar -->
     <div class="col-lg-4">
         <!-- Quick Actions -->
@@ -347,7 +543,7 @@
 
 .info-label {
     font-weight: 600;
-    color: #333;
+    color: inherit;
     min-width: 150px;
     display: flex;
     align-items: center;
@@ -355,8 +551,9 @@
 }
 
 .info-value {
-    color: #666;
+    color: inherit;
     flex: 1;
+    opacity: 0.9;
 }
 
 .price-display {
@@ -383,7 +580,8 @@
 
 .description-content {
     line-height: 1.6;
-    color: #555;
+    color: inherit;
+    opacity: 0.9;
 }
 
 .stat-item {
@@ -415,11 +613,12 @@
 .stat-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: inherit;
 }
 
 .stat-label {
-    color: #666;
+    color: inherit;
+    opacity: 0.75;
     font-size: 0.9rem;
 }
 

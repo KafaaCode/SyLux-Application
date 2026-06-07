@@ -153,8 +153,8 @@
                                 <th>#</th>
                                 <th>الصورة</th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'name', 'sort_order' => request('sort_by') == 'name' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'name', 'sort_order' => request('sort_by') == 'name' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         اسم المستخدم
                                         @if(request('sort_by') == 'name')
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
@@ -162,8 +162,8 @@
                                     </a>
                                 </th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'email', 'sort_order' => request('sort_by') == 'email' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'email', 'sort_order' => request('sort_by') == 'email' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         البريد الإلكتروني
                                         @if(request('sort_by') == 'email')
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
@@ -171,10 +171,13 @@
                                     </a>
                                 </th>
                                 <th>الصلاحيات</th>
+                                <th>الجنس</th>
+                                <th>تاريخ الميلاد</th>
+                                <th>النقاط</th>
                                 <th>الحالة</th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'created_at', 'sort_order' => request('sort_by') == 'created_at' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'created_at', 'sort_order' => request('sort_by') == 'created_at' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         تاريخ الإنشاء
                                         @if(request('sort_by') == 'created_at' || !request('sort_by'))
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
@@ -223,6 +226,21 @@
                                         @else
                                             <span class="badge badge-light-secondary">بدون صلاحيات</span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        @if($user->gender === 'male')
+                                            <span class="badge badge-light-primary">ذكر</span>
+                                        @elseif($user->gender === 'female')
+                                            <span class="badge badge-light-danger">أنثى</span>
+                                        @else
+                                            <span class="text-muted">-</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{ $user->birthdate ? $user->birthdate->format('Y-m-d') : '-' }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-light-warning">{{ $user->points ?? 0 }}</span>
                                     </td>
                                     <td>
                                         @if($user->active ?? true)
@@ -302,7 +320,7 @@
                                 </div>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="text-center">
+                                    <td colspan="11" class="text-center">
                                         <div class="py-4">
                                             <i class="fa-solid fa-users fa-3x text-muted mb-3"></i>
                                             <h5 class="text-muted">لا توجد مستخدمين</h5>

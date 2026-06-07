@@ -110,6 +110,9 @@ class UserController extends Controller
             'password' => 'required|min:8|confirmed',
             'roles' => 'required|array|min:1',
             'active' => 'nullable|boolean',
+            'gender' => 'nullable|in:male,female',
+            'birthdate' => 'nullable|date',
+            'points' => 'nullable|integer|min:0',
         ]);
 
         $input = $request->all();
@@ -146,6 +149,9 @@ class UserController extends Controller
             'password' => 'nullable|min:8|confirmed',
             'roles' => 'required|array|min:1',
             'active' => 'nullable|boolean',
+            'gender' => 'nullable|in:male,female',
+            'birthdate' => 'nullable|date',
+            'points' => 'nullable|integer|min:0',
         ]);
 
         $input = $request->all();

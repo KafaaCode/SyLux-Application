@@ -167,7 +167,15 @@ class ProductController extends Controller
     
     public function show($id)
     {
-        $product = Product::with(['category', 'orderDetails', 'images'])->findOrFail($id);
+        $product = Product::with([
+            'category',
+            'orderDetails',
+            'images',
+            'discounts',
+            'groups',
+            'reviews.user',
+            'favorites.user'
+        ])->findOrFail($id);
         return view('admin.products.show', compact('product'));
     }
     

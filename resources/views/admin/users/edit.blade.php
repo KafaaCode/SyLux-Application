@@ -160,8 +160,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="active" class="form-label">الحالة</label>
-                                                <select id="active" 
-                                                        name="active" 
+                                                <select id="active"
+                                                        name="active"
                                                         class="form-control @error('active') is-invalid @enderror">
                                                     <option value="1" {{ old('active', $user->active ?? 1) == 1 ? 'selected' : '' }}>نشط</option>
                                                     <option value="0" {{ old('active', $user->active ?? 1) == 0 ? 'selected' : '' }}>غير نشط</option>
@@ -171,11 +171,56 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="gender" class="form-label">الجنس</label>
+                                                <select id="gender"
+                                                        name="gender"
+                                                        class="form-control @error('gender') is-invalid @enderror">
+                                                    <option value="">اختر</option>
+                                                    <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>ذكر</option>
+                                                    <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>أنثى</option>
+                                                </select>
+                                                @error('gender')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="birthdate" class="form-label">تاريخ الميلاد</label>
+                                                <input type="date"
+                                                       id="birthdate"
+                                                       name="birthdate"
+                                                       class="form-control @error('birthdate') is-invalid @enderror"
+                                                       value="{{ old('birthdate', $user->birthdate ? $user->birthdate->format('Y-m-d') : '') }}">
+                                                @error('birthdate')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="points" class="form-label">النقاط</label>
+                                                <input type="number"
+                                                       id="points"
+                                                       name="points"
+                                                       min="0"
+                                                       class="form-control @error('points') is-invalid @enderror"
+                                                       value="{{ old('points', $user->points ?? 0) }}">
+                                                @error('points')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Roles and Permissions -->
                         <div class="col-lg-4">
                             <div class="card">
@@ -224,6 +269,24 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="info-item">
+                                        <strong>الجنس:</strong>
+                                        @if($user->gender === 'male')
+                                            <span class="badge badge-light-primary">ذكر</span>
+                                        @elseif($user->gender === 'female')
+                                            <span class="badge badge-light-danger">أنثى</span>
+                                        @else
+                                            <span class="text-muted">غير محدد</span>
+                                        @endif
+                                    </div>
+                                    <div class="info-item mt-2">
+                                        <strong>تاريخ الميلاد:</strong>
+                                        <span class="text-muted">{{ $user->birthdate ? $user->birthdate->format('Y-m-d') : '-' }}</span>
+                                    </div>
+                                    <div class="info-item mt-2">
+                                        <strong>النقاط:</strong>
+                                        <span class="badge badge-light-warning">{{ $user->points ?? 0 }}</span>
+                                    </div>
+                                    <div class="info-item mt-2">
                                         <strong>تاريخ الإنشاء:</strong>
                                         <span class="text-muted">{{ $user->created_at->format('Y-m-d H:i') }}</span>
                                     </div>

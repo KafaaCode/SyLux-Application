@@ -98,6 +98,42 @@
                             
                             <div class="info-row">
                                 <div class="info-label">
+                                    <i class="fa-solid fa-venus-mars text-success"></i>
+                                    الجنس:
+                                </div>
+                                <div class="info-value">
+                                    @if($user->gender === 'male')
+                                        <span class="badge badge-light-primary">ذكر</span>
+                                    @elseif($user->gender === 'female')
+                                        <span class="badge badge-light-danger">أنثى</span>
+                                    @else
+                                        <span class="text-muted">غير محدد</span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-calendar text-primary"></i>
+                                    تاريخ الميلاد:
+                                </div>
+                                <div class="info-value">
+                                    {{ $user->birthdate ? $user->birthdate->format('Y-m-d') : '-' }}
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa-solid fa-coins text-warning"></i>
+                                    النقاط:
+                                </div>
+                                <div class="info-value">
+                                    <span class="badge badge-light-warning">{{ $user->points ?? 0 }}</span>
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
                                     <i class="fa-solid fa-user-shield text-success"></i>
                                     الصلاحيات:
                                 </div>
@@ -111,7 +147,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             <div class="info-row">
                                 <div class="info-label">
                                     <i class="fa-solid fa-calendar text-primary"></i>
@@ -343,7 +379,7 @@
 
 .info-label {
     font-weight: 600;
-    color: #333;
+    color: inherit;
     min-width: 150px;
     display: flex;
     align-items: center;
@@ -351,8 +387,9 @@
 }
 
 .info-value {
-    color: #666;
+    color: inherit;
     flex: 1;
+    opacity: 0.85;
 }
 
 .role-card {
@@ -384,7 +421,7 @@
 .role-name {
     font-weight: 600;
     margin-bottom: 0.25rem;
-    color: #333;
+    color: inherit;
 }
 
 .role-description {
@@ -420,11 +457,12 @@
 .stat-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: inherit;
 }
 
 .stat-label {
-    color: #666;
+    color: inherit;
+    opacity: 0.75;
     font-size: 0.9rem;
 }
 

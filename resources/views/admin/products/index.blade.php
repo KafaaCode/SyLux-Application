@@ -153,8 +153,8 @@
                                 <th>#</th>
                                 <th>الصورة</th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'name', 'sort_order' => request('sort_by') == 'name' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'name', 'sort_order' => request('sort_by') == 'name' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         اسم المنتج
                                         @if(request('sort_by') == 'name')
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
@@ -164,8 +164,8 @@
                                 <th>الفئة</th>
                                 <th>الرقم التسلسلي</th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => request('sort_by') == 'price' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => request('sort_by') == 'price' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         السعر
                                         @if(request('sort_by') == 'price')
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
@@ -174,8 +174,8 @@
                                 </th>
                                 <th>الحالة</th>
                                 <th>
-                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'created_at', 'sort_order' => request('sort_by') == 'created_at' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}" 
-                                       class="text-white text-decoration-none">
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'created_at', 'sort_order' => request('sort_by') == 'created_at' && request('sort_order') == 'asc' ? 'desc' : 'asc']) }}"
+                                       class="text-decoration-none" style="color: inherit;">
                                         تاريخ الإنشاء
                                         @if(request('sort_by') == 'created_at' || !request('sort_by'))
                                             <i class="fa-solid fa-sort-{{ request('sort_order') == 'asc' ? 'up' : 'down' }}"></i>
