@@ -73,7 +73,7 @@
 
                                     <div class="mb-1">
                                         <label class="form-label">البريد الإلكتروني</label>
-                                        <input type="email" class="form-control" name="email" value="{{ old('email', $settings->email ?? '') }}" placeholder="info@friptrading.com" />
+                                        <input type="email" class="form-control" name="email" value="{{ old('email', $settings->email ?? '') }}" placeholder="info@syluxbelgium.com" />
                                         @error('email')<small class="text-danger">{{ $message }}</small>@enderror
                                     </div>
                                 </div>

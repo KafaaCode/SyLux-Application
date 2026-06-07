@@ -76,7 +76,7 @@
                     @php
                         $contactAddress = \App\Models\AppSetting::get('contact.address', '153 شارع الصناعة، المدينة الصناعية، سوريا');
                         $contactPhone = \App\Models\AppSetting::get('contact.phone', '+963 11 1234567');
-                        $contactEmail = \App\Models\AppSetting::get('contact.email', 'info@friptrading.com');
+                        $contactEmail = \App\Models\AppSetting::get('contact.email', 'info@syluxbelgium.com');
                     @endphp
                     <p class="small mb-2">
                         <i class="bi-geo-alt-fill me-2"></i> {{ $contactAddress }}
