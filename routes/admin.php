@@ -12,6 +12,9 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
+use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\ReviewController;
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.index');
@@ -37,6 +40,18 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('orders/', [OrderController::class, 'index'])->name('admin.orders.index');
     Route::get('orders/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
     Route::post('orders/{id}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
+    // Discounts
+    Route::resource('discounts', DiscountController::class)->names('admin.discounts');
+
+    // Groups
+    Route::resource('groups', GroupController::class)->names('admin.groups');
+
+    // Reviews
+    Route::get('reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
+    Route::get('reviews/{id}', [ReviewController::class, 'show'])->name('admin.reviews.show');
+    Route::post('reviews/{id}/status', [ReviewController::class, 'updateStatus'])->name('admin.reviews.updateStatus');
+    Route::delete('reviews/{id}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
 
     // Settings
     Route::get('settings', [AdminSettingController::class, 'edit'])->name('admin.settings.edit');

@@ -28,6 +28,9 @@ class User extends Authenticatable
         'status',
         'is_admin',
         'fcm_token',
+        'gender',
+        'birthdate',
+        'points',
     ];
 
     // العلاقة مع التخصص
@@ -46,6 +49,16 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     /**
@@ -67,6 +80,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'is_admin' => 'boolean',
+        'birthdate' => 'date',
+        'points' => 'integer',
     ];
 
     public function isAdmin(): bool

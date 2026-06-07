@@ -17,7 +17,12 @@ class Product extends Model
         'image',
         'request_number',
         'price',
-        'active'
+        'active',
+        'color',
+        'material',
+        'available_sizes',
+        'delivery_duration',
+        'fasil_method',
     ];
 
     public function category()
@@ -40,5 +45,25 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function discounts()
+    {
+        return $this->belongsToMany(Discount::class, 'discount_product');
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_product');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

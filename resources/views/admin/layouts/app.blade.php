@@ -459,6 +459,15 @@
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.products.index') }}"><i
                             class="fa-solid fa-box-open"></i><span class="menu-title text-truncate">المنتجات</span></a>
                 </li>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.discounts.index') }}"><i
+                            class="fa-solid fa-tags"></i><span class="menu-title text-truncate">الخصومات</span></a>
+                </li>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.groups.index') }}"><i
+                            class="fa-solid fa-object-group"></i><span class="menu-title text-truncate">المجموعات</span></a>
+                </li>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.reviews.index') }}"><i
+                            class="fa-solid fa-star"></i><span class="menu-title text-truncate">التقييمات</span></a>
+                </li>
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.roles.index') }}"><i
                             class="fa-solid fa-shield-halved"></i><span
                             class="menu-title text-truncate">الصلاحيات</span></a>
