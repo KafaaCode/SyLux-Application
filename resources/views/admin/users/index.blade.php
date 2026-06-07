@@ -244,9 +244,9 @@
                                     </td>
                                     <td>
                                         @if($user->active ?? true)
-                                            <span class="badge badge-success">نشط</span>
+                                            <span class="badge badge-light-success">نشط</span>
                                         @else
-                                            <span class="badge badge-danger">غير نشط</span>
+                                            <span class="badge badge-light-danger">غير نشط</span>
                                         @endif
                                     </td>
                                     <td>

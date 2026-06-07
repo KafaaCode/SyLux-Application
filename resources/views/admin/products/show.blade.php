@@ -41,9 +41,9 @@
                 </h4>
                 <div class="card-tools">
                     @if($product->active)
-                        <span class="badge badge-success badge-lg">نشط</span>
+                        <span class="badge badge-light-success badge-lg">نشط</span>
                     @else
-                        <span class="badge badge-danger badge-lg">غير نشط</span>
+                        <span class="badge badge-light-danger badge-lg">غير نشط</span>
                     @endif
                 </div>
             </div>
@@ -256,13 +256,13 @@
                             <tbody>
                                 @foreach($product->discounts as $discount)
                                 <tr>
-                                    <td><span class="badge badge-success">{{ $discount->discount_percentage }}%</span></td>
+                                    <td><span class="badge badge-light-success">{{ $discount->discount_percentage }}%</span></td>
                                     <td>{{ $discount->apply_to_all ? 'نعم' : 'لا' }}</td>
                                     <td>
                                         @if($discount->active)
-                                            <span class="badge badge-success">نشط</span>
+                                            <span class="badge badge-light-success">نشط</span>
                                         @else
-                                            <span class="badge badge-danger">غير نشط</span>
+                                            <span class="badge badge-light-danger">غير نشط</span>
                                         @endif
                                     </td>
                                     <td>{{ $discount->start_time ? $discount->start_time->format('Y-m-d H:i') : '-' }}</td>
@@ -287,7 +287,7 @@
                         <div class="col-md-6 mb-2">
                             <div class="group-card border rounded p-2">
                                 <strong>{{ $group->name }}</strong>
-                                <span class="badge {{ $group->active ? 'badge-success' : 'badge-danger' }} float-right">
+                                <span class="badge {{ $group->active ? 'badge-light-success' : 'badge-light-danger' }} float-right">
                                     {{ $group->active ? 'نشط' : 'غير نشط' }}
                                 </span>
                             </div>
@@ -329,11 +329,11 @@
                                     <td>{{ Str::limit($review->review, 40) }}</td>
                                     <td>
                                         @if($review->status === 'pending')
-                                            <span class="badge badge-warning">معلق</span>
+                                            <span class="badge badge-light-warning">معلق</span>
                                         @elseif($review->status === 'approved')
-                                            <span class="badge badge-success">مقبول</span>
+                                            <span class="badge badge-light-success">مقبول</span>
                                         @else
-                                            <span class="badge badge-danger">مرفوض</span>
+                                            <span class="badge badge-light-danger">مرفوض</span>
                                         @endif
                                     </td>
                                     <td>{{ $review->created_at->format('Y-m-d') }}</td>
