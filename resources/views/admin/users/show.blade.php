@@ -82,7 +82,7 @@
                 <div class="row info-grid">
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-primary">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-venus-mars text-primary"></i>
                             </div>
                             <div class="tile-content">
@@ -102,7 +102,7 @@
 
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-primary">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-calendar text-primary"></i>
                             </div>
                             <div class="tile-content">
@@ -114,7 +114,7 @@
 
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-warning">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-coins text-warning"></i>
                             </div>
                             <div class="tile-content">
@@ -128,7 +128,7 @@
 
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-info">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-user-shield text-info"></i>
                             </div>
                             <div class="tile-content">
@@ -148,7 +148,7 @@
 
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-success">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-calendar-check text-success"></i>
                             </div>
                             <div class="tile-content">
@@ -160,7 +160,7 @@
 
                     <div class="col-md-4 col-sm-6 mb-3">
                         <div class="info-tile">
-                            <div class="tile-icon bg-light-secondary">
+                            <div class="tile-icon">
                                 <i class="fa-solid fa-clock text-secondary"></i>
                             </div>
                             <div class="tile-content">
