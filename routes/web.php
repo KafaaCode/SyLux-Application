@@ -40,7 +40,15 @@ Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edi
 
 Route::get('user-create', [UserController::class, 'create_user']);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    if (auth()->check()) {
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('admin.index');
+        }
+        return redirect()->route('login');
+    }
+    return redirect()->route('login');
+})->name('home');
 
 Route::get('/privacy', function () {
     return view('front.privacy.privacy');
