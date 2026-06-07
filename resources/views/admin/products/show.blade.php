@@ -190,7 +190,7 @@
                                     <div class="spec-tile">
                                         <div class="spec-icon bg-light-dark"><i class="fa-solid fa-cogs text-dark"></i></div>
                                         <div class="spec-body">
-                                            <span class="spec-label">طريقة الفصل</span>
+                                            <span class="spec-label">طريقة الغسيل</span>
                                             <span class="spec-value">{{ $product->fasil_method }}</span>
                                         </div>
                                     </div>

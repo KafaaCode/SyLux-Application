@@ -251,12 +251,12 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="fasil_method" class="form-label">طريقة الفصل</label>
+                                                <label for="fasil_method" class="form-label">طريقة الغسيل</label>
                                                 <input type="text"
                                                        id="fasil_method"
                                                        name="fasil_method"
                                                        class="form-control @error('fasil_method') is-invalid @enderror"
-                                                       placeholder="أدخل طريقة الفصل"
+                                                       placeholder="أدخل طريقة الغسيل"
                                                        value="{{ old('fasil_method', $product->fasil_method) }}">
                                                 @error('fasil_method')
                                                     <div class="invalid-feedback">{{ $message }}</div>
