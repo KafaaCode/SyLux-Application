@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\SupportController;
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.index');
@@ -52,6 +53,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('reviews/{id}', [ReviewController::class, 'show'])->name('admin.reviews.show');
     Route::post('reviews/{id}/status', [ReviewController::class, 'updateStatus'])->name('admin.reviews.updateStatus');
     Route::delete('reviews/{id}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+
+    // Support
+    Route::get('supports', [SupportController::class, 'index'])->name('admin.supports.index');
+    Route::get('supports/{id}', [SupportController::class, 'show'])->name('admin.supports.show');
+    Route::delete('supports/{id}', [SupportController::class, 'destroy'])->name('admin.supports.destroy');
 
     // Settings
     Route::get('settings', [AdminSettingController::class, 'edit'])->name('admin.settings.edit');

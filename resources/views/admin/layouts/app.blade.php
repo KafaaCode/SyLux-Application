@@ -468,6 +468,9 @@
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.reviews.index') }}"><i
                             class="fa-solid fa-star"></i><span class="menu-title text-truncate">التقييمات</span></a>
                 </li>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.supports.index') }}"><i
+                            class="fa-solid fa-headset"></i><span class="menu-title text-truncate">الدعم الفني</span></a>
+                </li>
                 <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.roles.index') }}"><i
                             class="fa-solid fa-shield-halved"></i><span
                             class="menu-title text-truncate">الصلاحيات</span></a>
