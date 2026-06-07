@@ -183,6 +183,87 @@
                                             </div>
                                         </div>
                                         
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="color" class="form-label">اللون</label>
+                                                <input type="text"
+                                                       id="color"
+                                                       name="color"
+                                                       class="form-control @error('color') is-invalid @enderror"
+                                                       placeholder="مثال: أحمر، ذهبي"
+                                                       value="{{ old('color', $product->color) }}">
+                                                @error('color')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="material" class="form-label">المادة</label>
+                                                <input type="text"
+                                                       id="material"
+                                                       name="material"
+                                                       class="form-control @error('material') is-invalid @enderror"
+                                                       placeholder="مثال: قطن، جلد"
+                                                       value="{{ old('material', $product->material) }}">
+                                                @error('material')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="available_sizes" class="form-label">المقاسات المتاحة</label>
+                                                <input type="text"
+                                                       id="available_sizes"
+                                                       name="available_sizes"
+                                                       class="form-control @error('available_sizes') is-invalid @enderror"
+                                                       placeholder="مثال: S, M, L, XL"
+                                                       value="{{ old('available_sizes', $product->available_sizes) }}">
+                                                @error('available_sizes')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="delivery_duration" class="form-label">مدة التوصيل</label>
+                                                <div class="input-group">
+                                                    <input type="number"
+                                                           min="0"
+                                                           id="delivery_duration"
+                                                           name="delivery_duration"
+                                                           class="form-control @error('delivery_duration') is-invalid @enderror"
+                                                           placeholder="عدد الساعات/الأيام"
+                                                           value="{{ old('delivery_duration', $product->delivery_duration) }}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">ساعة/يوم</span>
+                                                    </div>
+                                                </div>
+                                                @error('delivery_duration')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="fasil_method" class="form-label">طريقة الفصل</label>
+                                                <input type="text"
+                                                       id="fasil_method"
+                                                       name="fasil_method"
+                                                       class="form-control @error('fasil_method') is-invalid @enderror"
+                                                       placeholder="أدخل طريقة الفصل"
+                                                       value="{{ old('fasil_method', $product->fasil_method) }}">
+                                                @error('fasil_method')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="description" class="form-label">الوصف</label>

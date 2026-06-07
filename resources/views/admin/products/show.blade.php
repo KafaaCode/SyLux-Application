@@ -90,119 +90,133 @@
                     <!-- Product Information -->
                     <div class="col-md-8">
                         <div class="product-info">
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-tag text-primary"></i>
-                                    اسم المنتج:
+                            <!-- Header: name + category + price -->
+                            <div class="product-headline">
+                                <h3 class="product-name mb-1">{{ $product->name }}</h3>
+                                <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+                                    <span class="badge badge-light-primary">
+                                        <i class="fa-solid fa-list"></i> {{ $product->category->name ?? 'غير محدد' }}
+                                    </span>
+                                    @if($product->active)
+                                        <span class="badge badge-light-success"><i class="fa-solid fa-circle text-success" style="font-size:8px;vertical-align:middle;"></i> نشط</span>
+                                    @else
+                                        <span class="badge badge-light-danger"><i class="fa-solid fa-circle text-danger" style="font-size:8px;vertical-align:middle;"></i> غير نشط</span>
+                                    @endif
                                 </div>
-                                <div class="info-value">{{ $product->name }}</div>
+                                <div class="price-tag">
+                                    <i class="fa-solid fa-tag"></i>
+                                    {{ number_format($product->price, 2) }} <span class="currency">ريال</span>
+                                </div>
                             </div>
-                            
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-list text-info"></i>
-                                    الفئة:
-                                </div>
-                                <div class="info-value">
-                                    <span class="badge badge-light-primary">{{ $product->category->name ?? 'غير محدد' }}</span>
-                                </div>
-                            </div>
-                            
-                            @if($product->serial_number)
-                                <div class="info-row">
-                                    <div class="info-label">
-                                        <i class="fa-solid fa-barcode text-warning"></i>
-                                        الرقم التسلسلي:
+
+                            <hr class="my-3" style="border-color: rgba(0,0,0,0.08);">
+
+                            <!-- Specs grid -->
+                            <div class="row spec-grid">
+                                @if($product->serial_number)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-warning"><i class="fa-solid fa-barcode text-warning"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">الرقم التسلسلي</span>
+                                            <span class="spec-value">{{ $product->serial_number }}</span>
+                                        </div>
                                     </div>
-                                    <div class="info-value">{{ $product->serial_number }}</div>
                                 </div>
-                            @endif
-                            
-                            @if($product->request_number)
-                                <div class="info-row">
-                                    <div class="info-label">
-                                        <i class="fa-solid fa-file-alt text-secondary"></i>
-                                        رقم الطلب:
+                                @endif
+
+                                @if($product->request_number)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-secondary"><i class="fa-solid fa-file-alt text-secondary"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">رقم الطلب</span>
+                                            <span class="spec-value">{{ $product->request_number }}</span>
+                                        </div>
                                     </div>
-                                    <div class="info-value">{{ $product->request_number }}</div>
                                 </div>
-                            @endif
-                            
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-dollar-sign text-success"></i>
-                                    السعر:
-                                </div>
-                                <div class="info-value">
-                                    <span class="price-display">{{ number_format($product->price, 2) }} ريال</span>
-                                </div>
-                            </div>
-                            
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-calendar text-primary"></i>
-                                    تاريخ الإنشاء:
-                                </div>
-                                <div class="info-value">{{ $product->created_at->format('Y-m-d H:i') }}</div>
-                            </div>
-                            
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-clock text-info"></i>
-                                    آخر تحديث:
-                                </div>
-                                <div class="info-value">{{ $product->updated_at->format('Y-m-d H:i') }}</div>
-                            </div>
+                                @endif
 
-                            @if($product->color)
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-palette text-primary"></i>
-                                    اللون:
+                                @if($product->color)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-primary"><i class="fa-solid fa-palette text-primary"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">اللون</span>
+                                            <span class="spec-value">{{ $product->color }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="info-value">{{ $product->color }}</div>
-                            </div>
-                            @endif
+                                @endif
 
-                            @if($product->material)
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-layer-group text-secondary"></i>
-                                    المادة:
+                                @if($product->material)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-secondary"><i class="fa-solid fa-layer-group text-secondary"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">المادة</span>
+                                            <span class="spec-value">{{ $product->material }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="info-value">{{ $product->material }}</div>
-                            </div>
-                            @endif
+                                @endif
 
-                            @if($product->available_sizes)
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-ruler text-warning"></i>
-                                    المقاسات:
+                                @if($product->available_sizes)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-warning"><i class="fa-solid fa-ruler text-warning"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">المقاسات المتاحة</span>
+                                            <span class="spec-value">{{ $product->available_sizes }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="info-value">{{ $product->available_sizes }}</div>
-                            </div>
-                            @endif
+                                @endif
 
-                            @if($product->delivery_duration)
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-truck text-info"></i>
-                                    مدة التوصيل:
+                                @if($product->delivery_duration)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-info"><i class="fa-solid fa-truck text-info"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">مدة التوصيل</span>
+                                            <span class="spec-value">{{ $product->delivery_duration }} <small>ساعة/يوم</small></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="info-value">{{ $product->delivery_duration }}</div>
-                            </div>
-                            @endif
+                                @endif
 
-                            @if($product->fasil_method)
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="fa-solid fa-cogs text-dark"></i>
-                                    طريقة الفصل:
+                                @if($product->fasil_method)
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-dark"><i class="fa-solid fa-cogs text-dark"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">طريقة الفصل</span>
+                                            <span class="spec-value">{{ $product->fasil_method }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="info-value">{{ $product->fasil_method }}</div>
+                                @endif
+
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-primary"><i class="fa-solid fa-calendar text-primary"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">تاريخ الإنشاء</span>
+                                            <span class="spec-value">{{ $product->created_at->format('Y-m-d') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <div class="spec-tile">
+                                        <div class="spec-icon bg-light-info"><i class="fa-solid fa-clock text-info"></i></div>
+                                        <div class="spec-body">
+                                            <span class="spec-label">آخر تحديث</span>
+                                            <span class="spec-value">{{ $product->updated_at->format('Y-m-d') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -528,6 +542,88 @@
 
 .product-info {
     padding: 1rem 0;
+}
+
+/* Product headline */
+.product-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #28a745;
+}
+
+.price-tag .currency {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* Spec tiles */
+.spec-tile {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.015);
+    transition: all 0.25s ease;
+    height: 100%;
+}
+
+.spec-tile:hover {
+    background: rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.spec-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.spec-icon i {
+    font-size: 1.05rem;
+}
+
+.spec-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    color: inherit;
+    opacity: 0.6;
+    margin-bottom: 0.15rem;
+    font-weight: 500;
+}
+
+.spec-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: inherit;
+    opacity: 0.95;
+    word-break: break-word;
+}
+
+.spec-value small {
+    font-weight: 400;
+    opacity: 0.7;
 }
 
 .info-row {

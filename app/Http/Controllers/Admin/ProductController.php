@@ -101,6 +101,11 @@ class ProductController extends Controller
             'request_number' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'active' => 'nullable|boolean',
+            'color' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'available_sizes' => 'nullable|string|max:255',
+            'delivery_duration' => 'nullable|integer|min:0',
+            'fasil_method' => 'nullable|string|max:255',
         ]);
 
         $productData = [
@@ -111,6 +116,11 @@ class ProductController extends Controller
             'request_number' => $request->input('request_number'),
             'description' => $request->input('description'),
             'active' => $request->input('active', 1),
+            'color' => $request->input('color'),
+            'material' => $request->input('material'),
+            'available_sizes' => $request->input('available_sizes'),
+            'delivery_duration' => $request->input('delivery_duration'),
+            'fasil_method' => $request->input('fasil_method'),
         ];
 
         if ($request->hasFile('image')) {
@@ -198,6 +208,11 @@ class ProductController extends Controller
             'request_number' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'active' => 'nullable|boolean',
+            'color' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'available_sizes' => 'nullable|string|max:255',
+            'delivery_duration' => 'nullable|integer|min:0',
+            'fasil_method' => 'nullable|string|max:255',
         ]);
 
         $product = Product::findOrFail($id);
@@ -209,6 +224,11 @@ class ProductController extends Controller
         $product->request_number = $request->input('request_number');
         $product->description = $request->input('description');
         $product->active = $request->input('active', 1);
+        $product->color = $request->input('color');
+        $product->material = $request->input('material');
+        $product->available_sizes = $request->input('available_sizes');
+        $product->delivery_duration = $request->input('delivery_duration');
+        $product->fasil_method = $request->input('fasil_method');
         
         if ($request->hasFile('image')) {
             // Delete old image if exists
