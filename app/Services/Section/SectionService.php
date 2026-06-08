@@ -56,10 +56,6 @@ class SectionService
 
     public function delete(Section $section): void
     {
-        if ($section->categories()->exists()) {
-            throw new \RuntimeException('لا يمكن حذف قسم مرتبط بفئات. انقل الفئات أولاً.');
-        }
-
         $this->deleteImage($section);
         $this->repository->delete($section);
     }

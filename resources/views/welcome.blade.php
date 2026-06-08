@@ -69,7 +69,6 @@
               <img class="card-img" src="{{ \App\Support\MediaHelper::sectionImage($section) }}" alt="{{ $section->name }}">
               <div class="card-body text-center">
                 <h4 class="card-title text-inherit mb-1">{{ $section->name }}</h4>
-                <span class="card-subtitle text-body">{{ $section->categories_count }} {{ __('messages.categories') }}</span>
               </div>
             </a>
           </div>

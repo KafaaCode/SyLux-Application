@@ -12,7 +12,6 @@ class HomeService
     {
         return [
             'sections' => Section::where('active', 1)
-                ->withCount(['categories' => fn ($query) => $query->where('active', 1)])
                 ->orderBy('name')
                 ->get(),
             'categories' => Category::where('active', 1)

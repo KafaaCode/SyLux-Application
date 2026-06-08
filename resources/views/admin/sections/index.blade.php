@@ -93,7 +93,6 @@
                                 <th>#</th>
                                 <th>الصورة</th>
                                 <th>الاسم</th>
-                                <th>عدد الفئات</th>
                                 <th>الحالة</th>
                                 <th>تاريخ الإنشاء</th>
                                 <th>الإجراءات</th>
@@ -118,9 +117,6 @@
                                         @endif
                                     </td>
                                     <td><h6 class="mb-0">{{ $section->name }}</h6></td>
-                                    <td>
-                                        <span class="badge badge-light-primary">{{ $section->categories_count }}</span>
-                                    </td>
                                     <td>
                                         @if($section->active)
                                             <span class="badge badge-success">مفعل</span>
@@ -149,20 +145,18 @@
                                                     <i class="fa-solid fa-{{ $section->active ? 'ban' : 'check' }}"></i>
                                                 </button>
                                             </form>
-                                            @if($section->categories_count === 0)
-                                                <button type="button"
-                                                        class="btn btn-sm btn-danger"
-                                                        title="حذف"
-                                                        onclick="openDeleteSectionModal('{{ route('admin.sections.destroy', $section) }}')">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            @endif
+                                            <button type="button"
+                                                    class="btn btn-sm btn-danger"
+                                                    title="حذف"
+                                                    onclick="openDeleteSectionModal('{{ route('admin.sections.destroy', $section) }}')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center py-4">
+                                    <td colspan="6" class="text-center py-4">
                                         <i class="fa-solid fa-layer-group fa-3x text-muted mb-2 d-block"></i>
                                         <p class="text-muted mb-2">لا توجد أقسام</p>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createSectionModal">

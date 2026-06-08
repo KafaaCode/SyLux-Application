@@ -44,19 +44,4 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-start pb-0">
-                <div>
-                    <h2 class="fw-bolder mb-0">{{ $stats['total_categories'] }}</h2>
-                    <p class="card-text">فئات مرتبطة</p>
-                </div>
-                <div class="avatar bg-light-info p-50 m-0">
-                    <div class="avatar-content">
-                        <i class="fa-solid fa-list text-info font-medium-5"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

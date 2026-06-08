@@ -15,8 +15,4 @@ class Section extends Model
         'active'
     ];
 
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
 }

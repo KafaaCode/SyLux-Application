@@ -12,7 +12,7 @@ class SectionRepository implements SectionRepositoryInterface
 {
     public function paginate(SectionFilterData $filter): LengthAwarePaginator
     {
-        $query = Section::query()->withCount('categories');
+        $query = Section::query();
 
         if ($filter->search) {
             $query->where('name', 'like', '%' . $filter->search . '%');
@@ -36,7 +36,6 @@ class SectionRepository implements SectionRepositoryInterface
             'total' => $total,
             'active' => Section::where('active', 1)->count(),
             'inactive' => Section::where('active', 0)->count(),
-            'total_categories' => Section::withCount('categories')->get()->sum('categories_count'),
         ];
     }
 
