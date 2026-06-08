@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         try {
             // جلب الفئات مع الترجمات
-            $categories = Category::with(['country', 'specialization', 'translations'])
+            $categories = Category::with(['translations'])
                 ->where('active', 1)
                 ->get();
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
-            $category = Category::with(['country', 'specialization', 'translations', 'products'])
+            $category = Category::with(['translations', 'products'])
                 ->find($id);
 
             if (!$category) {
@@ -73,26 +73,17 @@ class CategoryController extends Controller
     }
 
     /**
-     * استرجاع فئات حسب الدولة والتخصص
+     * استرجاع جميع الفئات المتاحة
      */
     public function getByCountryAndSpecialization(Request $request)
     {
         try {
-            $countryId = $request->query('country_id');
-            $specializationId = $request->query('specialization_id');
-
-            if (!$countryId || !$specializationId) {
-                return ApiTranslationHelper::errorResponse('معرف الدولة والتخصص مطلوب', 400);
-            }
-
-            $categories = Category::with(['country', 'specialization', 'translations'])
-                ->where('country_id', $countryId)
-                ->where('specialization_id', $specializationId)
+            $categories = Category::with(['translations'])
                 ->where('active', 1)
                 ->get();
 
             if ($categories->isEmpty()) {
-                return ApiTranslationHelper::errorResponse('لا توجد فئات متاحة لهذه الدولة والتخصص', 404);
+                return ApiTranslationHelper::errorResponse('لا توجد فئات متاحة', 404);
             }
 
             $translatedCategories = $categories->map(function($category) {

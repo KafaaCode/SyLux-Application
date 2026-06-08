@@ -132,7 +132,7 @@
                                 <i class="fa-solid fa-filter"></i> تطبيق
                             </button>
 
-                            @if(request()->hasAny(['search', 'country_id', 'specialization_id', 'status', 'sort_by', 'sort_order']))
+                            @if(request()->hasAny(['search', 'status', 'sort_by', 'sort_order']))
                                 <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary btn-sm">
                                     <i class="fa-solid fa-times"></i> مسح
                                 </a>
@@ -157,7 +157,6 @@
                                             @endif
                                         </a>
                                     </th>
-                                    <th>القسم</th>
                                     <th>عدد المنتجات</th>
                                     <th>الحالة</th>
                                     <th>الإجراءات</th>
@@ -182,10 +181,9 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column">
-                                                <h6 class="mb-0">{{ $category->getTranslatedName() }}</h6>
+                                                <h6 class="mb-0">{{ $category->name }}</h6>
                                             </div>
                                         </td>
-                                        <td>{{ $category->section->name ?? '—' }}</td>
                                         <td>
                                             <span class="badge badge-light-primary">{{ $category->products->count() }}</span>
                                         </td>
@@ -215,7 +213,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center">
+                                        <td colspan="6" class="text-center">
                                             <div class="py-4">
                                                 <i class="fa-solid fa-list fa-3x text-muted mb-3"></i>
                                                 <h5 class="text-muted">لا توجد فئات</h5>
@@ -458,7 +456,7 @@
         <script>
             $(document).ready(function () {
                 // Auto-submit form on filter change
-                $('.card-tools form select[name="country_id"], .card-tools form select[name="specialization_id"], .card-tools form select[name="status"], .card-tools form select[name="sort_by"], .card-tools form select[name="sort_order"]').on('change', function () {
+                $('.card-tools form select[name="status"], .card-tools form select[name="sort_by"], .card-tools form select[name="sort_order"]').on('change', function () {
                     $(this).closest('form').submit();
                 });
 

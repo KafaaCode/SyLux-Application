@@ -31,7 +31,7 @@
             <div class="card-header">
                 <h4 class="card-title">
                     <i class="fa-solid fa-eye text-info"></i>
-                    تفاصيل الفئة: {{ $category->getTranslatedName() }}
+                    تفاصيل الفئة: {{ $category->name }}
                 </h4>
             </div>
             <div class="card-body">
@@ -40,7 +40,7 @@
                         <div class="text-center">
                             @if($category->image)
                                 <img src="{{ asset('storage/' . $category->image) }}" 
-                                     alt="{{ $category->getTranslatedName() }}" 
+                                     alt="{{ $category->name }}" 
                                      class="img-fluid rounded shadow"
                                      style="max-height: 300px; object-fit: cover;">
                             @else
@@ -55,15 +55,7 @@
                         <div class="category-details">
                             <div class="detail-item">
                                 <strong>اسم الفئة:</strong>
-                                <span>{{ $category->getTranslatedName() }}</span>
-                            </div>
-                            <div class="detail-item">
-                                <strong>الدولة:</strong>
-                                <span class="badge badge-light-info">{{ $category->country?->getTranslatedName() ?? 'غير محدد' }}</span>
-                            </div>
-                            <div class="detail-item">
-                                <strong>التخصص:</strong>
-                                <span class="badge badge-light-warning">{{ $category->specialization?->getTranslatedName() ?? 'غير محدد' }}</span>
+                                <span>{{ $category->name }}</span>
                             </div>
                             <div class="detail-item">
                                 <strong>عدد المنتجات:</strong>
@@ -150,7 +142,7 @@
                 <div class="text-center mb-3">
                     <i class="fa-solid fa-exclamation-triangle fa-3x text-warning"></i>
                 </div>
-                <p>هل أنت متأكد من حذف الفئة "<strong>{{ $category->getTranslatedName() }}</strong>"؟</p>
+                <p>هل أنت متأكد من حذف الفئة "<strong>{{ $category->name }}</strong>"؟</p>
                 <p class="text-danger">هذا الإجراء لا يمكن التراجع عنه.</p>
                 @if($category->products->count() > 0)
                     <div class="alert alert-warning">

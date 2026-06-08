@@ -55,8 +55,6 @@ class ApiTranslationHelper
             'name' => $category->getTranslatedName($locale),
             'image' => $category->image ? asset('storage/' . $category->image) : null,
             'active' => $category->active,
-            'country' => $category->country ? self::formatCountry($category->country) : null,
-            'specialization' => $category->specialization ? self::formatSpecialization($category->specialization) : null,
             'products_count' => $category->products->count(),
             'created_at' => $category->created_at,
             'updated_at' => $category->updated_at,

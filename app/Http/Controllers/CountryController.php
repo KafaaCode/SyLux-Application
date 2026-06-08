@@ -51,15 +51,6 @@ class CountryController extends Controller
             }
 
             $responseData = ApiTranslationHelper::formatCountry($country);
-            
-            // إضافة الفئات إذا كانت مطلوبة
-            if ($country->categories->count() > 0) {
-                $responseData['categories'] = $country->categories
-                    ->where('active', 1)
-                    ->map(function($category) {
-                        return ApiTranslationHelper::formatCategory($category);
-                    });
-            }
 
             return ApiTranslationHelper::successResponse($responseData, 'تم استرجاع الدولة بنجاح');
             
@@ -113,15 +104,6 @@ class SpecializationController extends Controller
             }
 
             $responseData = ApiTranslationHelper::formatSpecialization($specialization);
-            
-            // إضافة الفئات إذا كانت مطلوبة
-            if ($specialization->categories->count() > 0) {
-                $responseData['categories'] = $specialization->categories
-                    ->where('active', 1)
-                    ->map(function($category) {
-                        return ApiTranslationHelper::formatCategory($category);
-                    });
-            }
 
             return ApiTranslationHelper::successResponse($responseData, 'تم استرجاع التخصص بنجاح');
             

@@ -94,45 +94,6 @@
                                         
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="section_id" class="form-label">القسم</label>
-                                                <select id="section_id" name="section_id" class="form-control @error('section_id') is-invalid @enderror">
-                                                    <option value="">اختر القسم</option>
-                                                    @foreach ($sections as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('section_id', $category->section_id) == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('section_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="country_id" class="form-label">الدولة</label>
-                                                <select id="country_id" name="country_id" class="form-control @error('country_id') is-invalid @enderror">
-                                                    <option value="">اختر الدولة</option>
-                                                    @foreach ($countries as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('country_id', $category->country_id) == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="specialization_id" class="form-label">التخصص</label>
-                                                <select id="specialization_id" name="specialization_id" class="form-control @error('specialization_id') is-invalid @enderror">
-                                                    <option value="">اختر التخصص</option>
-                                                    @foreach ($specializations as $id => $name)
-                                                        <option value="{{ $id }}" {{ old('specialization_id', $category->specialization_id) == $id ? 'selected' : '' }}>{{ $name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('specialization_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label for="active" class="form-label">الحالة</label>
                                                 <select id="active" 
                                                         name="active" 
@@ -144,65 +105,6 @@
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Translations Section -->
-                            <div class="card mt-4">
-                                <div class="card-header">
-                                    <h5 class="card-title">
-                                        <i class="fa-solid fa-language text-primary"></i>
-                                        الترجمات
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="nav-tabs-custom">
-                                        <ul class="nav nav-tabs" id="translationTabs" role="tablist">
-                                            @foreach(config('app.available_locales') as $locale => $name)
-                                                <li class="nav-item" role="presentation">
-                                                    <a class="nav-link {{ $loop->first ? 'active' : '' }}" 
-                                                       id="{{ $locale }}-tab" 
-                                                       data-toggle="tab" 
-                                                       href="#{{ $locale }}" 
-                                                       role="tab" 
-                                                       aria-controls="{{ $locale }}" 
-                                                       aria-selected="{{ $loop->first ? 'true' : 'false' }}"
-                                                       onclick="switchTab('{{ $locale }}')">
-                                                        {{ $name }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                        
-                                        <div class="tab-content" id="translationTabsContent">
-                                            @foreach(config('app.available_locales') as $locale => $name)
-                                                @php
-                                                    $translation = $category->translations()->where('locale', $locale)->first();
-                                                @endphp
-                                                <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" 
-                                                     id="{{ $locale }}" 
-                                                     role="tabpanel" 
-                                                     aria-labelledby="{{ $locale }}-tab"
-                                                     style="display: {{ $loop->first ? 'block' : 'none' }};">
-                                                    <div class="row mt-3">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="name_translated_{{ $locale }}" class="form-label">
-                                                                    اسم الفئة ({{ $name }})
-                                                                </label>
-                                                                <input type="text" 
-                                                                       id="name_translated_{{ $locale }}" 
-                                                                       name="translations[{{ $locale }}][name_translated]" 
-                                                                       class="form-control"
-                                                                       placeholder="أدخل اسم الفئة بـ {{ $name }}"
-                                                                       value="{{ old('translations.' . $locale . '.name_translated', $translation->name_translated ?? '') }}">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

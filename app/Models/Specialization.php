@@ -19,12 +19,6 @@ class Specialization extends Model
         return $this->hasMany(User::class);
     }
 
-    // علاقة التخصص بالفئات
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
-
     // علاقة الترجمات
     public function translations()
     {
