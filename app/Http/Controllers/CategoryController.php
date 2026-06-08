@@ -16,9 +16,8 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         try {
-            // جلب الفئات مع الترجمات
-            $categories = Category::with(['translations'])
-                ->where('active', 1)
+            // جلب الفئات النشطة
+            $categories = Category::where('active', 1)
                 ->get();
 
             if ($categories->isEmpty()) {
@@ -43,7 +42,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
-            $category = Category::with(['translations', 'products'])
+            $category = Category::with(['products'])
                 ->find($id);
 
             if (!$category) {
@@ -78,8 +77,7 @@ class CategoryController extends Controller
     public function getByCountryAndSpecialization(Request $request)
     {
         try {
-            $categories = Category::with(['translations'])
-                ->where('active', 1)
+            $categories = Category::where('active', 1)
                 ->get();
 
             if ($categories->isEmpty()) {

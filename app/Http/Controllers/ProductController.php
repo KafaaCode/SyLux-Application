@@ -62,7 +62,7 @@ class ProductController extends Controller
     public function productsCategory($id)
     {
         try {
-            $category = Category::with(['translations', 'country', 'specialization'])->find($id);
+            $category = Category::find($id);
             
             if (!$category) {
                 return ApiTranslationHelper::errorResponse('الفئة غير موجودة', 404);
@@ -70,7 +70,7 @@ class ProductController extends Controller
 
             // جلب المنتجات مع تفاصيل الفئة
             $products = $category->products()
-                ->with(['category.country', 'category.specialization', 'translations', 'images'])
+                ->with(['category', 'translations', 'images'])
                 ->where('active', 1)
                 ->get();
 

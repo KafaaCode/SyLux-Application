@@ -15,8 +15,7 @@ class HomeService
                 ->withCount(['categories' => fn ($query) => $query->where('active', 1)])
                 ->orderBy('name')
                 ->get(),
-            'categories' => Category::with(['section', 'translations'])
-                ->where('active', 1)
+            'categories' => Category::where('active', 1)
                 ->latest()
                 ->take(12)
                 ->get(),

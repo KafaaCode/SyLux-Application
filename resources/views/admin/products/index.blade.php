@@ -212,7 +212,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-light-primary">{{ $product->category?->getTranslatedName() ?? 'غير محدد' }}</span>
+                                        <span class="badge badge-light-primary">{{ $product->category?->name ?? 'غير محدد' }}</span>
                                     </td>
                                     <td>
                                         <span class="text-muted">{{ $product->serial_number ?? 'غير محدد' }}</span>

@@ -119,10 +119,10 @@
             @foreach($categories as $index => $category)
               <div class="col-sm-6 col-lg-4 mb-5">
                 <a class="card card-flush h-100" href="{{ route('categories.web.show', $category) }}" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                  <img class="card-img" src="{{ \App\Support\MediaHelper::categoryImage($category) }}" alt="{{ $category->getTranslatedName() }}">
+                  <img class="card-img" src="{{ \App\Support\MediaHelper::categoryImage($category) }}" alt="{{ $category->name }}">
                   <div class="card-body">
                     <span class="card-subtitle text-body">{{ __('messages.discover_more') }}</span>
-                    <h4 class="card-title text-inherit">{{ $category->getTranslatedName() }}</h4>
+                    <h4 class="card-title text-inherit">{{ $category->name }}</h4>
                   </div>
                 </a>
               </div>

@@ -114,7 +114,7 @@
                             <li>
                                 <a href="{{ route('categories.web.show', $category->id) }}"
                                     class="link-light text-decoration-none">
-                                    {{ $category->getTranslatedName() }}
+                                    {{ $category->name }}
                                 </a>
                             </li>
                         @endforeach

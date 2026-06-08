@@ -24,11 +24,11 @@
                                 data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
 
                                 <img class="card-img" src="{{ \App\Support\MediaHelper::categoryImage($category) }}"
-                                    alt="{{ $category->getTranslatedName() }}">
+                                    alt="{{ $category->name }}">
 
                                 <div class="card-body">
                                     <span class="card-subtitle text-body">اكتشف المزيد</span>
-                                    <h4 class="card-title text-inherit">{{ $category->getTranslatedName() }}</h4>
+                                    <h4 class="card-title text-inherit">{{ $category->name }}</h4>
                                 </div>
                             </a>
                         </div>

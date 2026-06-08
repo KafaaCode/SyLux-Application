@@ -52,7 +52,7 @@ class ApiTranslationHelper
         
         return [
             'id' => $category->id,
-            'name' => $category->getTranslatedName($locale),
+            'name' => $category->name,
             'image' => $category->image ? asset('storage/' . $category->image) : null,
             'active' => $category->active,
             'products_count' => $category->products->count(),

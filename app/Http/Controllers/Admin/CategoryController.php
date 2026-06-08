@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use App\Models\Category;
-use App\Models\CategoryTranslation;
 use App\Helpers\ApiTranslationHelper;
 
 class CategoryController extends Controller
@@ -28,7 +27,7 @@ class CategoryController extends Controller
     public function adminIndex(Request $request)
     {
         try {
-            $query = Category::with(['translations', 'products']);
+            $query = Category::with(['products']);
             
             // Search functionality
             if ($request->filled('search')) {
@@ -149,20 +148,7 @@ class CategoryController extends Controller
             $categoryData['image'] = $request->file('image')->store('categories', 'public');
         }
 
-        $category = Category::create($categoryData);
-
-        // Save translations
-        if ($request->has('translations')) {
-            foreach ($request->input('translations') as $locale => $translationData) {
-                if (!empty($translationData['name_translated'])) {
-                    CategoryTranslation::create([
-                        'category_id' => $category->id,
-                        'locale' => $locale,
-                        'name_translated' => $translationData['name_translated']
-                    ]);
-                }
-            }
-        }
+        Category::create($categoryData);
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'تم إنشاء الفئة بنجاح');
@@ -170,13 +156,13 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $category = Category::with(['translations', 'products'])->findOrFail($id);
+        $category = Category::with(['products'])->findOrFail($id);
         return view('admin.categories.show', compact('category'));
     }
 
     public function edit($id)
     {
-        $category = Category::with('translations')->findOrFail($id);
+        $category = Category::findOrFail($id);
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -202,23 +188,6 @@ class CategoryController extends Controller
         }
         
         $category->save();
-
-        // Save translations
-        if ($request->has('translations')) {
-            foreach ($request->input('translations') as $locale => $translationData) {
-                if (!empty($translationData['name_translated'])) {
-                    CategoryTranslation::updateOrCreate(
-                        [
-                            'category_id' => $category->id,
-                            'locale' => $locale
-                        ],
-                        [
-                            'name_translated' => $translationData['name_translated']
-                        ]
-                    );
-                }
-            }
-        }
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'تم تحديث الفئة بنجاح');

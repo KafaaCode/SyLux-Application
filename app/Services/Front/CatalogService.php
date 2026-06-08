@@ -10,16 +10,14 @@ class CatalogService
 {
     public function activeCategories()
     {
-        return Category::with(['section', 'translations'])
-            ->where('active', 1)
+        return Category::where('active', 1)
             ->orderBy('name')
             ->get();
     }
 
     public function categoryWithProducts(int $id): array
     {
-        $category = Category::with(['section', 'translations'])
-            ->where('active', 1)
+        $category = Category::where('active', 1)
             ->find($id);
 
         if (!$category) {

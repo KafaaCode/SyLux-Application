@@ -265,7 +265,7 @@
                         <div class="text-center mb-3">
                             <i class="fa-solid fa-exclamation-triangle fa-3x text-warning"></i>
                         </div>
-                        <p>هل أنت متأكد من حذف الفئة "<strong>{{ $category->getTranslatedName() }}</strong>"؟</p>
+                        <p>هل أنت متأكد من حذف الفئة "<strong>{{ $category->name }}</strong>"؟</p>
                         <p class="text-danger">هذا الإجراء لا يمكن التراجع عنه.</p>
                         @if($category->products->count() > 0)
                             <div class="alert alert-warning">

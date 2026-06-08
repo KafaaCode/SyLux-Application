@@ -14,7 +14,7 @@
 
         <!-- Title and Back Button -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="mb-0">المنتجات تحت فئة: {{ $category->getTranslatedName() }}</h3>
+            <h3 class="mb-0">المنتجات تحت فئة: {{ $category->name }}</h3>
             <a href="{{ route('categories.web.index') }}" class="btn btn-outline-primary">
                 <i class="fas fa-arrow-right"></i> رجوع
             </a>
